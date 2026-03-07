@@ -44,9 +44,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Memory & Context
 
-- [ ] **MEM-01**: Working memory persists across sessions via MEMORY.md + topic files in .claude/memory/
-- [ ] **MEM-02**: Session start loads vault awareness (active projects, recent changes, priorities)
-- [ ] **MEM-03**: Four-layer memory architecture implemented (session, working, long-term summary, project-specific)
+- [x] **MEM-01**: Working memory persists across sessions via MEMORY.md + topic files in .claude/memory/
+- [x] **MEM-02**: Session start loads vault awareness (active projects, recent changes, priorities)
+- [x] **MEM-03**: Four-layer memory architecture implemented (session, working, long-term summary, project-specific)
 - [ ] **MEM-04**: Long-term summary memory distills patterns, recurring themes, and organizational insights
 - [ ] **MEM-05**: Project-specific memory tracks per-project state, decisions, and context
 
@@ -127,9 +127,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CONN-03 | Phase 3 | Pending |
 | CONN-04 | Phase 3 | Pending |
 | CONN-05 | Phase 4 | Pending |
-| MEM-01 | Phase 3 | Pending |
-| MEM-02 | Phase 3 | Pending |
-| MEM-03 | Phase 3 | Pending |
+| MEM-01 | Phase 3 | Complete |
+| MEM-02 | Phase 3 | Complete |
+| MEM-03 | Phase 3 | Complete |
 | MEM-04 | Phase 4 | Pending |
 | MEM-05 | Phase 4 | Pending |
 | PROA-01 | Phase 5 | Pending |
