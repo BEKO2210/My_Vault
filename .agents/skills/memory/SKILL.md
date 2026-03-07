@@ -65,8 +65,8 @@ Output includes: working memory summary, insight count + categories + top entrie
 2. Load vault-index.json and tag-index.json:
    ```javascript
    const { loadJson } = require('./.agents/skills/scan/utils.cjs');
-   const vaultIndex = loadJson('.vault-index/vault-index.json');
-   const tagIndex = loadJson('.vault-index/tag-index.json');
+   const vaultIndex = loadJson('.claude/indexes/vault-index.json');
+   const tagIndex = loadJson('.claude/indexes/tag-index.json');
    ```
 3. Gather activity log from session actions.
 4. Call distillation:
@@ -158,8 +158,8 @@ const dashboard = generateMemoryOverview('.');
 console.log(dashboard);
 
 // Manually distill
-const vaultIndex = loadJson('.vault-index/vault-index.json');
-const tagIndex = loadJson('.vault-index/tag-index.json');
+const vaultIndex = loadJson('.claude/indexes/vault-index.json');
+const tagIndex = loadJson('.claude/indexes/tag-index.json');
 const result = distillInsights('.', vaultIndex, tagIndex, { activityLog: [] });
 
 // Create project memory
