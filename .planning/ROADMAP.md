@@ -3,7 +3,7 @@
 ## Milestones
 
 - ✅ **v1.0 MVP** — Phases 1-4 (shipped 2026-03-07)
-- 📋 **v1.1 Proactive Intelligence** — Phases 5-6 (planned)
+- ✅ **v1.1 Proactive Intelligence** — Phases 5-6 (shipped 2026-03-08)
 
 ## Phases
 
@@ -19,10 +19,10 @@ See: `.planning/milestones/v1.0-ROADMAP.md` for full details.
 
 </details>
 
-### 🚧 v1.1 Proactive Intelligence (In Progress)
+### v1.1 Proactive Intelligence (Complete)
 
-- [ ] **Phase 5: Proactive Intelligence** — /briefing, /triage, /synthesize, /maintain skills for autonomous vault care
-- [ ] **Phase 6: Gap Closure** — Fix /maintain and /triage integration bugs found by milestone audit
+- [x] **Phase 5: Proactive Intelligence** — /briefing, /triage, /synthesize, /maintain skills for autonomous vault care
+- [x] **Phase 6: Gap Closure** — Fix /maintain and /triage integration bugs found by milestone audit
 
 ## Phase Details
 
@@ -36,13 +36,13 @@ See: `.planning/milestones/v1.0-ROADMAP.md` for full details.
   3. User invokes /synthesize on a topic and gets a generated summary note that cites specific vault notes via wiki-links and is marked as Claude-synthesized in its frontmatter
   4. User invokes /maintain and gets a report of tag/frontmatter inconsistencies, stale projects (active but untouched), and outdated references -- with proposed fixes
   5. All proactive actions respect the AUTO/PROPOSE/NEVER classification from Phase 1 -- no silent structural changes
-**Plans:** 3/4 plans executed
+**Plans:** 4/4 plans executed
 
 Plans:
 - [x] 05-01-PLAN.md — /briefing skill: calm daily executive summary (changes, priorities, neglected items, suggestions)
 - [x] 05-02-PLAN.md — /triage skill: inbox classification with confidence-based governance (AUTO/PROPOSE/REVIEW)
 - [x] 05-03-PLAN.md — /synthesize skill: topic-based knowledge synthesis with wiki-link citations
-- [ ] 05-04-PLAN.md — /maintain skill: vault consistency auditing (frontmatter, staleness, outdated references)
+- [x] 05-04-PLAN.md — /maintain skill: vault consistency auditing (frontmatter, staleness, outdated references)
 
 ### Phase 6: Gap Closure — Fix /maintain and /triage Bugs
 **Goal**: Close all gaps identified by milestone audit — fix broken outdated reference detection, false-positive stale project reporting, and review-type triage routing
@@ -53,10 +53,10 @@ Plans:
   1. `getOutdatedReferences` correctly reads `link.targetPath` from link-map.json and returns actual outdated references
   2. `getStaleProjects` skips template files (05 - Templates/) — no false positives
   3. `getTargetFolder('review')` returns a valid target folder instead of null
-**Plans:** 0/1 plans executed
+**Plans:** 1/1 plans executed
 
 Plans:
-- [ ] 06-01-PLAN.md — Fix maintain-utils (PROA-09 resolvedPath→targetPath, PROA-08 isTemplate guard) and triage review-type routing
+- [x] 06-01-PLAN.md — Fix maintain-utils (PROA-09 resolvedPath->targetPath, PROA-08 isTemplate guard) and triage review-type routing
 
 ## Progress
 
@@ -66,5 +66,5 @@ Plans:
 | 2. Scanning Engine & Cache Infrastructure | v1.0 | 2/2 | Complete | 2026-03-07 |
 | 3. Core Skills & Working Memory | v1.0 | 4/4 | Complete | 2026-03-07 |
 | 4. Deep Memory & Semantic Search | v1.0 | 4/4 | Complete | 2026-03-07 |
-| 5. Proactive Intelligence | v1.1 | 3/4 | In Progress | - |
-| 6. Gap Closure | v1.1 | 0/1 | Pending | - |
+| 5. Proactive Intelligence | v1.1 | 4/4 | Complete | 2026-03-07 |
+| 6. Gap Closure | v1.1 | 1/1 | Complete | 2026-03-08 |
