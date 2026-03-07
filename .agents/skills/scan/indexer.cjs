@@ -32,6 +32,12 @@ function buildLinkMap(vaultIndex) {
   // e.g., "00 - Inbox/Inbox" -> look up "00 - Inbox/Inbox.md"
   const pathLookup = new Set(Object.keys(notes));
 
+  // Known exceptions: links that are valid by design but don't resolve to notes
+  const KNOWN_EXCEPTIONS = new Set([
+    'new project', 'new area', 'new resource', 'new tool', 'new zettel',
+    'new person', 'new decision', 'new meeting', 'new snippet',
+  ]);
+
   const links = [];
   let unresolvedCount = 0;
 
@@ -44,6 +50,24 @@ function buildLinkMap(vaultIndex) {
 
       let resolved = false;
       let targetPath = null;
+
+      // Skip known exceptions: "New X" placeholder links, .claude/ paths, template variables
+      const loweredTarget = target.toLowerCase();
+      if (KNOWN_EXCEPTIONS.has(loweredTarget) ||
+          target.startsWith('.claude/') ||
+          target.startsWith('{{') && target.endsWith('}}')) {
+        resolved = true;
+        targetPath = null; // Valid exception, no actual file
+        links.push({
+          source: sourcePath,
+          target: target,
+          targetPath: targetPath,
+          resolved: resolved,
+          alias: link.alias || null,
+          heading: link.heading || null,
+        });
+        continue;
+      }
 
       // Try exact match: target + '.md' as a key in notes
       const exactKey = target + '.md';
@@ -60,10 +84,9 @@ function buildLinkMap(vaultIndex) {
 
       // Try case-insensitive match via name lookup
       if (!resolved) {
-        const lowered = target.toLowerCase();
-        if (nameToPath[lowered]) {
+        if (nameToPath[loweredTarget]) {
           resolved = true;
-          targetPath = nameToPath[lowered];
+          targetPath = nameToPath[loweredTarget];
         }
       }
 
