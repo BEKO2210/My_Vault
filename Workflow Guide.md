@@ -7,79 +7,79 @@ tags:
 
 # Workflow Guide
 
-> Wie du dieses Second Brain System effektiv nutzt.
+> How to use this Second Brain system effectively.
 
-## Das PARA-Prinzip
+## The PARA Principle
 
-Dieses System basiert auf **PARA** von Tiago Forte, erweitert mit **Zettelkasten** und **MOCs**.
+This system is based on **PARA** by Tiago Forte, extended with **Zettelkasten** and **MOCs**.
 
-| Ordner | Inhalt | Zeitrahmen |
-|--------|--------|------------|
-| **00 - Inbox** | Alles Neue, Unverarbeitete | Temporaer (woechentlich leeren) |
-| **01 - Projects** | Aktive Projekte mit klarem Ziel | Begrenzt (Wochen/Monate) |
-| **02 - Areas** | Lebensbereiche, Verantwortung | Dauerhaft |
-| **03 - Resources** | Wissen, Referenzen | Dauerhaft |
-| **04 - Archive** | Abgeschlossenes | Dauerhaft (inaktiv) |
+| Folder | Contents | Timeframe |
+|--------|----------|-----------|
+| **00 - Inbox** | Everything new, unprocessed | Temporary (empty weekly) |
+| **01 - Projects** | Active projects with a clear goal | Limited (weeks/months) |
+| **02 - Areas** | Life areas, responsibilities | Ongoing |
+| **03 - Resources** | Knowledge, references | Ongoing |
+| **04 - Archive** | Completed items | Ongoing (inactive) |
 
-## Taeglicher Workflow
+## Daily Workflow
 
-### 1. Capture (jederzeit)
-- Neue Gedanken -> `00 - Inbox`
-- Nutze die **Daily Note** (Ctrl/Cmd+D) fuer den Tag
+### 1. Capture (anytime)
+- New thoughts -> `00 - Inbox`
+- Use the **Daily Note** (Ctrl/Cmd+D) for the day
 
-### 2. Process (taeglich, 10 Min)
-- Inbox durchgehen
-- Jede Notiz: Ist das actionable?
-  - **Ja** -> Zum richtigen Projekt/Area verschieben
-  - **Nein, aber interessant** -> `03 - Resources`
-  - **Nein** -> Loeschen oder `04 - Archive`
+### 2. Process (daily, 10 min)
+- Go through the Inbox
+- Each note: Is it actionable?
+  - **Yes** -> Move to the right project/area
+  - **No, but interesting** -> `03 - Resources`
+  - **No** -> Delete or `04 - Archive`
 
-### 3. Create (bei Bedarf)
-- Neue Notizen immer mit Template erstellen
-- Mindestens 2 Wiki-Links pro Notiz setzen
-- Frontmatter ausfuellen
+### 3. Create (as needed)
+- Always create new notes using a template
+- Add at least 2 wiki-links per note
+- Fill in the frontmatter
 
-### 4. Connect (fortlaufend)
-- Beim Erstellen: "Welche bestehenden Notizen passen dazu?"
-- Wiki-Links setzen: `[[Notizname]]`
-- Die **Graph View** (Ctrl/Cmd+G) zeigt alle Verbindungen
+### 4. Connect (continuously)
+- When creating: "Which existing notes relate to this?"
+- Add wiki-links: `[[Note Name]]`
+- The **Graph View** (Ctrl/Cmd+G) shows all connections
 
-## Woechentlicher Workflow
+## Weekly Workflow
 
-Nutze das **[[Weekly Review]]** Template:
+Use the **[[Weekly Review]]** template:
 
-1. Inbox komplett leeren
-2. Projekte reviewen - Status aktualisieren
-3. Kalender der naechsten Woche pruefen
-4. Tasks priorisieren
+1. Empty the Inbox completely
+2. Review projects — update statuses
+3. Check the calendar for the coming week
+4. Prioritize tasks
 
-## Mit Claude Code arbeiten
+## Working with Claude Code
 
-### Claude als Wissensassistent
-Claude kann dieses Vault lesen und verstehen. Nutze es fuer:
+### Claude as Knowledge Assistant
+Claude can read and understand this vault. Use it for:
 
-- **"Fasse Projekt X zusammen"** - Claude liest die Projektnotiz und verlinkte Ressourcen
-- **"Erstelle eine neue Projektnotiz fuer Y"** - Claude nutzt das Template
-- **"Welche Verbindungen gibt es zwischen A und B?"** - Claude folgt den Links
-- **"Erstelle ein Meeting-Protokoll"** - Claude nutzt das Meeting-Template
-- **"Was weiss ich ueber Thema Z?"** - Claude durchsucht Resources und Zettel
+- **"Summarize project X"** — Claude reads the project note and linked resources
+- **"Create a new project note for Y"** — Claude uses the template
+- **"What connections are there between A and B?"** — Claude follows the links
+- **"Create a meeting protocol"** — Claude uses the Meeting template
+- **"What do I know about topic Z?"** — Claude searches Resources and Zettel notes
 
-### Cross-Project Arbeit
-Dieses Vault funktioniert projektuebergreifend:
+### Cross-Project Work
+This vault works across projects:
 
-1. **Ein Projekt erstellen** -> In `01 - Projects/` mit Template
-2. **Mit Area verlinken** -> `area: "[[Health]]"` im Frontmatter
-3. **Ressourcen zuordnen** -> Wiki-Links zu `03 - Resources/`
-4. **Meetings protokollieren** -> `project: "[[Mein Projekt]]"` im Meeting
-5. **Entscheidungen tracken** -> Decision-Template nutzen
+1. **Create a project** -> In `01 - Projects/` with template
+2. **Link to an area** -> `area: "[[Health]]"` in the frontmatter
+3. **Assign resources** -> Wiki-links to `03 - Resources/`
+4. **Log meetings** -> `project: "[[My Project]]"` in the meeting
+5. **Track decisions** -> Use the Decision template
 
-## Tipps
+## Tips
 
-- **Atomic Notes**: Eine Idee = eine Notiz (Zettelkasten-Prinzip)
-- **Eigene Worte**: Immer in eigenen Worten zusammenfassen
-- **Links > Ordner**: Die Kraft liegt in den Verbindungen, nicht der Ordnerstruktur
-- **Graph View**: Regelmaessig die Verbindungen visualisieren
-- **Nicht perfektionieren**: Lieber schnell erfassen als perfekt formatieren
+- **Atomic Notes**: One idea = one note (Zettelkasten principle)
+- **Own Words**: Always summarize in your own words
+- **Links > Folders**: The power lies in the connections, not the folder structure
+- **Graph View**: Regularly visualize connections
+- **Do not over-polish**: Capture quickly rather than format perfectly
 
 ---
 

@@ -6,150 +6,150 @@ tags:
   - onboarding
 ---
 
-# Willkommen in deinem Second Brain
+# Welcome to Your Second Brain
 
-Du hast gerade dein persoenliches Wissensmanagementsystem eingerichtet. Hier ist alles, was du wissen musst — ohne Fachchinesisch.
-
----
-
-## Was ist das hier?
-
-Stell dir vor, du haettest ein zweites Gehirn, das nichts vergisst. Jede Idee, jedes Projekt, jede Notiz — alles an einem Ort, alles miteinander verknuepft.
-
-Dieses System basiert auf drei einfachen Prinzipien:
-
-1. **PARA** — Vier Ordner, die alles abdecken: Projekte, Lebensbereiche, Wissen, Archiv
-2. **Zettelkasten** — Schreib Ideen in eigenen Worten auf und verlinke sie miteinander
-3. **Maps of Content** — Uebersichtsseiten, die dir den Weg zeigen
-
-Klingt kompliziert? Ist es nicht. Lies weiter.
+You have just set up your personal knowledge management system. Here is everything you need to know — no jargon.
 
 ---
 
-## In 5 Minuten startklar
+## What Is This?
 
-### Schritt 1: Plugins aktivieren
+Imagine you had a second brain that never forgets. Every idea, every project, every note — all in one place, all interconnected.
 
-Oeffne Obsidian-Einstellungen → **Community Plugins** → Installiere:
+This system is based on three simple principles:
 
-| Plugin | Warum? |
-|--------|--------|
-| **Dataview** | Zeigt automatisch Listen deiner Projekte, Aufgaben etc. |
-| **Templater** | Fuellt Templates automatisch aus (Datum, Titel etc.) |
-| **Calendar** | Kalenderansicht fuer deine Daily Notes (optional) |
+1. **PARA** — Four folders that cover everything: Projects, Areas, Resources, Archive
+2. **Zettelkasten** — Write down ideas in your own words and link them together
+3. **Maps of Content** — Overview pages that show you the way
 
-> Dataview ist das einzige Plugin, das du wirklich brauchst. Der Rest ist Komfort.
-
-### Schritt 2: Dashboard oeffnen
-
-Geh zu [[Home]] — das ist dein Startpunkt. Von dort erreichst du alles.
-
-### Schritt 3: Erste Notiz erstellen
-
-Auf der [[Home]]-Seite siehst du die Tabelle **"Neue Notiz erstellen"**. Klick einfach auf den passenden Link — z.B. `Neues Projekt`. Obsidian erstellt eine leere Seite. Dann:
-
-1. **Ctrl+Shift+T** druecken (oder Cmd+Shift+T auf Mac)
-2. Das passende Template auswaehlen (z.B. `Project`)
-3. Felder ausfuellen, fertig
-
-Danach benennst du die Notiz um (F2) — z.B. von "Neues Projekt" zu "Website Relaunch".
+Sounds complicated? It is not. Read on.
 
 ---
 
-## Die Ordnerstruktur
+## Ready in 5 Minutes
 
-Du musst dir nur diese Ordner merken:
+### Step 1: Activate Plugins
+
+Open Obsidian Settings → **Community Plugins** → Install:
+
+| Plugin | Why? |
+|--------|------|
+| **Dataview** | Automatically displays lists of your projects, tasks, etc. |
+| **Templater** | Fills in templates automatically (date, title, etc.) |
+| **Calendar** | Calendar view for your Daily Notes (optional) |
+
+> Dataview is the only plugin you truly need. The rest is convenience.
+
+### Step 2: Open the Dashboard
+
+Go to [[Home]] — this is your starting point. You can reach everything from there.
+
+### Step 3: Create Your First Note
+
+On the [[Home]] page you will see the **"Create a New Note"** table. Simply click the appropriate link — e.g. `New Project`. Obsidian creates a blank page. Then:
+
+1. Press **Ctrl+Shift+T** (or Cmd+Shift+T on Mac)
+2. Select the matching template (e.g. `Project`)
+3. Fill in the fields — done
+
+Afterwards, rename the note (F2) — e.g. from "New Project" to "Website Relaunch".
+
+---
+
+## The Folder Structure
+
+You only need to remember these folders:
 
 ```
-00 - Inbox/          Was reinkommt, kommt hierhin
-01 - Projects/       Aktive Projekte (haben ein Ende)
-02 - Areas/          Lebensbereiche (laufen immer weiter)
-03 - Resources/      Wissen, Buecher, Tools, Ideen
-04 - Archive/        Was fertig oder nicht mehr relevant ist
-05 - Templates/      Vorlagen — nicht anfassen, nur nutzen
-06 - Atlas/MOCs/     Uebersichtsseiten (Navigation)
-07 - Extras/         Bilder, Anhaenge, Sonstiges
+00 - Inbox/          New stuff goes here
+01 - Projects/       Active projects (have an end date)
+02 - Areas/          Life areas (ongoing)
+03 - Resources/      Knowledge, books, tools, ideas
+04 - Archive/        Completed or no longer relevant
+05 - Templates/      Templates — do not modify, just use
+06 - Atlas/MOCs/     Overview pages (navigation)
+07 - Extras/         Images, attachments, miscellaneous
 ```
 
-**Faustregel:** Weisst du nicht wohin? → `00 - Inbox`. Spaeter verschiebst du es an den richtigen Ort.
+**Rule of thumb:** Not sure where something goes? → `00 - Inbox`. Move it to the right place later.
 
 ---
 
-## Wie du taeglich damit arbeitest
+## How to Use It Daily
 
-### Morgens (2 Minuten)
-- Oeffne [[Home]] → schau dir deine aktiven Projekte und offenen Aufgaben an
-- Erstelle eine Daily Note (Ctrl+N → Template `Daily Note`)
+### Morning (2 minutes)
+- Open [[Home]] → check your active projects and open tasks
+- Create a Daily Note (Ctrl+N → Template `Daily Note`)
 
-### Untertags
-- Idee? → [[New Zettel]] auf [[Home]] klicken und aufschreiben
-- Neues Projekt? → [[New Project]] auf [[Home]] klicken
-- Alles was reinkommt → ab in die `00 - Inbox`
+### During the Day
+- Got an idea? → Click [[New Zettel]] on [[Home]] and write it down
+- New project? → Click [[New Project]] on [[Home]]
+- Anything that comes in → goes to `00 - Inbox`
 
-### Abends (5 Minuten)
-- Inbox durchgehen: Was davon ist ein Projekt? Ein Zettel? Verschieben.
-- Offene Aufgaben abhaken
+### Evening (5 minutes)
+- Go through the Inbox: Is this a project? A zettel? Move it.
+- Check off completed tasks
 
-### Woechentlich
-- Weekly Review machen → Template `Weekly Review` nutzen
-- Projekte pruefen: Laeuft alles? Blockiert etwas?
-
----
-
-## Die wichtigsten Regeln
-
-Es gibt nur vier:
-
-1. **Jede Notiz braucht einen Typ** — Im Frontmatter steht immer `type: project` oder `type: zettel` etc.
-2. **Jede Notiz braucht Verbindungen** — Am Ende jeder Notiz gibt es einen Abschnitt `## Verbindungen` mit Links zu verwandten Notizen
-3. **Schreib in eigenen Worten** — Copy-Paste bringt dir nichts. Umformulieren = Verstehen.
-4. **Lieber oft kurz als selten lang** — Eine Notiz pro Tag ist besser als ein Mammut-Dokument pro Monat
+### Weekly
+- Do a Weekly Review → use the `Weekly Review` template
+- Review projects: Is everything on track? Anything blocked?
 
 ---
 
-## Claude Code benutzen
+## The Key Rules
 
-Du kannst dieses Second Brain auch ueber das Terminal mit Claude Code verwalten. Starte Claude Code im Vault-Ordner und gib diesen Startbefehl ein:
+There are only four:
+
+1. **Every note needs a type** — The frontmatter always contains `type: project` or `type: zettel` etc.
+2. **Every note needs connections** — At the end of each note there is a `## Connections` section with links to related notes
+3. **Write in your own words** — Copy-paste does you no good. Rephrasing = understanding.
+4. **Short and often beats long and rare** — One note per day is better than one mammoth document per month
+
+---
+
+## Using Claude Code
+
+You can also manage this Second Brain via the terminal with Claude Code. Start Claude Code in the vault folder and enter this prompt:
 
 ```
-Lies die CLAUDE.md und mach dich mit meinem Second Brain vertraut.
-Ich moechte dass du mir hilfst, Notizen zu erstellen, zu suchen
-und zu verknuepfen. Halte dich an die Templates und Konventionen.
+Read the CLAUDE.md and familiarize yourself with my Second Brain.
+I would like you to help me create, search, and connect notes.
+Follow the templates and conventions.
 ```
 
-Danach kannst du z.B. sagen:
-- *"Erstelle ein neues Projekt: Website Relaunch"*
-- *"Suche alle Notizen zum Thema Marketing"*
-- *"Was sind meine offenen Aufgaben?"*
-- *"Erstelle einen Zettel zur Idee XY"*
-- *"Mach ein Weekly Review fuer diese Woche"*
+After that, you can say things like:
+- *"Create a new project: Website Relaunch"*
+- *"Search all notes about marketing"*
+- *"What are my open tasks?"*
+- *"Create a zettel about idea XY"*
+- *"Do a Weekly Review for this week"*
 
 ---
 
 ## FAQ
 
-**Muss ich alle Ordner nutzen?**
-Nein. Starte mit Projekten und Zettel-Notizen. Der Rest kommt von selbst.
+**Do I have to use all the folders?**
+No. Start with projects and zettel notes. The rest will come naturally.
 
-**Was wenn ich eine Notiz falsch einsortiert habe?**
-Verschieben. Die Wiki-Links funktionieren trotzdem (Obsidian aktualisiert sie automatisch).
+**What if I put a note in the wrong folder?**
+Move it. The wiki-links still work (Obsidian updates them automatically).
 
-**Brauche ich das Archiv?**
-Erst wenn du fertige Projekte hast. Am Anfang bleibt `04 - Archive` leer.
+**Do I need the archive?**
+Only once you have completed projects. At the start, `04 - Archive` stays empty.
 
-**Wie viele Tags soll eine Notiz haben?**
-2-5 reichen. Weniger ist mehr. Details stehen in [[Tag Conventions]].
-
----
-
-## Naechste Schritte
-
-- [ ] Erstes Projekt anlegen → Klick auf [[New Project]] in [[Home]]
-- [ ] Zwei Lebensbereiche definieren (z.B. Beruf, Gesundheit)
-- [ ] Eine Idee als Zettel festhalten
-- [ ] Morgen: Erste Daily Note schreiben
-- [ ] In einer Woche: Erstes Weekly Review machen
+**How many tags should a note have?**
+2-5 is enough. Less is more. Details are in [[Tag Conventions]].
 
 ---
 
-> *Das perfekte System gibt es nicht. Das beste System ist das, das du tatsaechlich benutzt. Fang klein an.*
+## Next Steps
+
+- [ ] Create your first project → Click [[New Project]] in [[Home]]
+- [ ] Define two life areas (e.g. career, health)
+- [ ] Capture an idea as a zettel
+- [ ] Tomorrow: Write your first Daily Note
+- [ ] In one week: Do your first Weekly Review
+
+---
+
+> *The perfect system does not exist. The best system is the one you actually use. Start small.*
