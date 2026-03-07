@@ -51,7 +51,7 @@ Plans:
 **Plans**: 2 plans in 2 waves
 
 Plans:
-- [ ] 02-01-PLAN.md -- Level 1 parser, scanner engine, vault-index.json, scan-state.json
+- [x] 02-01-PLAN.md -- Level 1 parser, scanner engine, vault-index.json, scan-state.json
 - [ ] 02-02-PLAN.md -- Derived indexes (link-map, tag-index), /scan skill definition, .gitignore
 
 ### Phase 3: Core Skills & Working Memory
