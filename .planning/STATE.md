@@ -1,9 +1,9 @@
 ---
 gsd_state_version: 1.0
 milestone: v1.0
-milestone_name: milestone
-status: unknown
-last_updated: "2026-03-07T17:32:31.094Z"
+milestone_name: MVP
+status: shipped
+last_updated: "2026-03-07T18:35:00.000Z"
 progress:
   total_phases: 4
   completed_phases: 4
@@ -18,16 +18,15 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-07)
 
 **Core value:** Claude autonomously maintains, connects, and evolves the knowledge base so the user can focus on thinking and creating -- not filing and organizing.
-**Current focus:** Phase 4 complete: Deep Memory & Semantic Search (4 of 4 plans done, includes gap-closure plan). Ready for Phase 5.
+**Current focus:** v1.0 MVP shipped. Planning next milestone (v1.1 Proactive Intelligence).
 
 ## Current Position
 
-Phase: 4 of 5 (Deep Memory & Semantic Search) -- COMPLETE
-Plan: 4 of 4 in current phase
-Status: Phase 04 complete (gap-closure plan 04-04 done), ready for Phase 05
-Last activity: 2026-03-07 -- Completed 04-04-PLAN.md (memory-utils.cjs wiring bug fixes + SKILL.md path corrections)
+Milestone: v1.0 MVP -- SHIPPED 2026-03-07
+Phases: 1-4 complete (14/14 plans)
+Status: Milestone archived. Ready for `/gsd:new-milestone` to start v1.1.
 
-Progress: [##########] 100% (Phases 1-4 complete)
+Progress: [##########] 100% (v1.0 complete)
 
 ## Performance Metrics
 
@@ -45,78 +44,24 @@ Progress: [##########] 100% (Phases 1-4 complete)
 | 3 - Core Skills & Working Memory | 4 | 15min | 4min |
 | 4 - Deep Memory & Semantic Search | 4 | 17min | 4min |
 
-**Recent Trend:**
-- Last 5 plans: 03-04 (4min), 04-01 (5min), 04-02 (4min), 04-03 (6min), 04-04 (2min)
-- Trend: Steady
-
-*Updated after each plan completion*
-
 ## Accumulated Context
 
 ### Decisions
 
-Decisions are logged in PROJECT.md Key Decisions table.
-Recent decisions affecting current work:
-
-- [Roadmap]: 5-phase structure derived from 37 requirements across 6 categories
-- [Roadmap]: Phase 4 (Deep Memory & Semantic Search) kept as separate phase despite only 3 requirements -- represents the critical boundary between explicit-data skills and semantic intelligence
-- [Roadmap]: Research suggests Phase 2 and Phase 4 may need deeper research during planning (ESM module issues, NLP library validation)
-- [01-01]: Translated Dataview AS aliases (Geaendert -> Modified) while preserving all FROM/WHERE/SORT clauses
-- [01-01]: Updated CONTRIBUTING.md repo URL from old project name to current Firstbrain
-- [01-01]: Wiki-links in MOC files updated as part of Task 1 alongside system docs
-- [01-01]: Applied voice/tone per user decision: direct "you" for guides, impersonal for references
-- [01-02]: CLAUDE.md at 134 lines -- compact but complete, all 6 sections included
-- [01-02]: Governance summary in CLAUDE.md uses table format for quick scanning
-- [01-02]: settings.json emptied since CLAUDE.md now serves that purpose
-- [01-03]: Translated Dataview AS aliases in MOCs (Projekte->Projects) while preserving all FROM/WHERE/SORT clauses
-- [01-03]: Monthly Review: preserved "Zettelkasten" as domain-specific term in "Zettelkasten insights"
-- [01-04]: Verification-only plan -- no files modified, purely automated checks + human Obsidian testing
-- [02-01]: Zero external dependencies -- all scanner functionality from Node.js built-ins (fs, path, crypto)
-- [02-01]: Hand-rolled YAML parser covers vault flat key-value + array format without gray-matter
-- [02-01]: Obsidian escaped pipe (\|) treated as alias delimiter in wiki-links
-- [02-01]: Templates scanned but flagged with isTemplate: true for downstream filtering
-- [02-01]: Inline #tags extracted separately from frontmatter tags, merged into allTags array
-- [02-02]: Indexer operates purely in-memory on vaultIndex data -- no file I/O in buildLinkMap or buildTagIndex
-- [02-02]: Case-insensitive link resolution matches Obsidian behavior via name.toLowerCase() lookup map
-- [02-02]: Tag index sorted per-tag for deterministic output across runs
-- [02-02]: Index files gitignored as derived data -- regenerable by running /scan
-- [03-03]: MEMORY.md at vault root (32 lines) with 50-line cap enforced by rewrite-not-append pattern
-- [03-03]: Memory writes triggered by significant actions only (project changes, confirmed preferences), not routine operations
-- [03-03]: Layers 3-4 documented as Phase 4 stubs with explicit extension point file paths (insights.md, project-{name}.md)
-- [03-02]: MOC/system file exclusion uses path prefix (06 - Atlas/) plus named file checks for Home, START HERE, etc.
-- [03-02]: Link adjacency deduplicates evidence per shared target to avoid inflated scores
-- [03-02]: classifyFix requires single suggestion AND distance <= 1 for auto-fix (conservative to avoid false corrections)
-- [03-02]: suggestFixes returns structured objects {name, distance} for downstream classifyFix consumption
-- [03-01]: Template-to-folder mapping encodes all 12 CLAUDE.md types as a single TEMPLATE_MAP object
-- [03-01]: Date arithmetic uses noon anchor (T12:00:00) to avoid timezone-induced date shifts
-- [03-01]: Templater-style {{date:FORMAT}} variants handled alongside standard {{date}} substitution
-- [03-01]: daily-utils.cjs re-exports getDateVars and substituteVariables from create-utils.cjs to avoid duplication
-- [03-01]: Rollover deduplication compares task text after stripping (from [[...]]) suffix
-- [04-02]: Observation matching uses substring + 60% keyword overlap for insight deduplication
-- [04-02]: Tag cluster detection uses pairwise comparison with 3+ shared notes threshold
-- [04-02]: Dominant tags defined as top 20% by note count (minimum 3 notes) for organizational pattern detection
-- [04-02]: Project lessons distilled at confidence 0.6 (higher than default 0.5) as concrete observations
-- [Phase 04-01]: Dynamic import() wraps @huggingface/transformers (ESM-only) from CJS with try/catch for graceful degradation
-- [Phase 04-01]: SQLite BLOB storage for Float32Array embeddings using node:sqlite built-in (no external DB dependency)
-- [Phase 04-01]: Brute-force cosine similarity sufficient for vault-scale search (<5ms for 5000 vectors at 384-dim)
-- [Phase 04-01]: package.json placed at vault root (standard Node.js convention, Obsidian ignores non-markdown files)
-- [04-03]: scanWithEmbeddings() is a separate async export -- existing sync scan() left unchanged for backward compatibility
-- [04-03]: Embedding sync uses try/catch require for embedder.cjs -- no hard dependency between scan and search skills
-- [04-04]: Backward-compatible fallback in distillInsights() -- accepts both object and array vaultIndex formats
-- [04-04]: getEmbeddingStatus() called via require() inside try/catch to preserve graceful degradation
+Full decision log in PROJECT.md Key Decisions table (all marked with outcomes after v1.0).
 
 ### Pending Todos
 
-None yet.
+None.
 
 ### Blockers/Concerns
 
-- Phase 2: ESM-only imports for unified/remark-parse -- RESOLVED: hand-rolled regex parser used instead, zero dependencies
-- Phase 4: Claude Code auto-memory interaction with custom layered memory needs empirical testing
-- Phase 5: `natural` NLP library TF-IDF fitness for vault content is unvalidated (fallback: use Claude reasoning)
+- Phase 2 ESM issue -- RESOLVED (hand-rolled parser)
+- Phase 4 auto-memory interaction -- RESOLVED (works in practice)
+- Phase 5: `natural` NLP library fitness unvalidated (fallback: use Claude reasoning)
 
 ## Session Continuity
 
 Last session: 2026-03-07
-Stopped at: Completed 04-04-PLAN.md (gap-closure: memory-utils.cjs wiring bugs + SKILL.md paths). Phase 4 fully complete.
+Stopped at: v1.0 milestone completed and archived.
 Resume file: None

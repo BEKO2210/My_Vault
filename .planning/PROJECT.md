@@ -2,7 +2,7 @@
 
 ## What This Is
 
-Firstbrain is an open-source Obsidian vault that evolves from a traditional PARA + Zettelkasten starter kit into an adaptive AI-native second brain. Claude acts as the cognitive layer — maintaining structure, discovering connections, synthesizing knowledge, and proactively surfacing insights — while preserving full Obsidian compatibility. The vault is designed for anyone who wants an intelligent knowledge system that grows smarter over time without requiring manual organization.
+Firstbrain is an open-source Obsidian vault that transforms a traditional PARA + Zettelkasten starter kit into an adaptive AI-native second brain. Claude acts as the cognitive layer — scanning the vault, creating notes from templates, discovering connections between notes, searching by meaning, and remembering context across sessions — while preserving full Obsidian compatibility. The vault is designed for anyone who wants an intelligent knowledge system that grows smarter over time without requiring manual organization.
 
 ## Core Value
 
@@ -12,26 +12,22 @@ Claude autonomously maintains, connects, and evolves the knowledge base so the u
 
 ### Validated
 
-(None yet — ship to validate)
+- ✓ Full English rewrite of all existing vault content (templates, MOCs, guides, system docs) — v1.0
+- ✓ Markdown-first architecture with regenerable JSON cache (.claude/ directory) — v1.0
+- ✓ Evolution governance system (content evolves freely, structure evolves intentionally, system rules remain governed) — v1.0
+- ✓ Scalable architecture designed for 5,000+ notes (incremental scanning, indexing, selective rescans) — v1.0
+- ✓ Claude Code skills as primary implementation vehicle (/create, /daily, /connect, /health, /scan, /search, /memory) — v1.0
+- ✓ Orphan detection and link suggestion engine — v1.0
+- ✓ Persistent layered memory system (session memory, working memory, long-term summary memory, project-specific memory) — v1.0
+- ✓ Tiered semantic understanding engine (Level 1: explicit structure, Level 2: semantic search via embeddings) — v1.0
 
 ### Active
 
-- [ ] Full English rewrite of all existing vault content (templates, MOCs, guides, system docs)
-- [ ] Tiered semantic understanding engine (Level 1: explicit structure, Level 2: semantic inference, Level 3: relational inference across vault)
-- [ ] Persistent layered memory system (session memory, working memory, long-term summary memory, project-specific memory)
-- [ ] Knowledge graph with typed, weighted relationships (supports, contradicts, extends, inspired-by, prerequisite-for, depends-on)
-- [ ] Markdown-first architecture with regenerable JSON cache (.claude/ directory)
-- [ ] Inbox triage automation (classify, suggest routing, auto-tag low-risk, propose moves)
-- [ ] Orphan detection and link suggestion engine
-- [ ] Knowledge decay detection (stale projects, outdated notes, deprecated references, review queues)
-- [ ] Emergent structure proposals (new MOCs, areas, thematic clusters when patterns are strong)
-- [ ] Cross-note synthesis capability (thematic summaries, concept overviews, "what the vault knows about X")
 - [ ] Calm daily briefing system (priorities, changes, neglected items, suggestions)
+- [ ] Inbox triage automation (classify, suggest routing, auto-tag low-risk, propose moves)
+- [ ] Cross-note synthesis capability (thematic summaries, concept overviews, "what the vault knows about X")
+- [ ] Knowledge decay detection (stale projects, outdated notes, deprecated references, review queues)
 - [ ] Conflict resolution system (detect misclassifications, propose corrections, never override silently)
-- [ ] Smart template adaptation (context-aware template selection and field adjustment)
-- [ ] Scalable architecture designed for 5,000+ notes (incremental scanning, indexing, selective rescans)
-- [ ] Claude Code skills as primary implementation vehicle (/briefing, /maintain, /synthesize, /triage, /connect, etc.)
-- [ ] Evolution governance system (content evolves freely, structure evolves intentionally, system rules remain governed)
 
 ### Out of Scope
 
@@ -40,17 +36,20 @@ Claude autonomously maintains, connects, and evolves the knowledge base so the u
 - External API integrations (Notion, Todoist, etc.) — self-contained system
 - Custom Obsidian plugins — Claude Code skills only, no JS plugin development
 - Automatic deletion or archiving without user review — review-first always
+- Typed weighted relationships in v1 — needs to emerge from actual use patterns, not imposed upfront
+- Emergent structure proposals in v1 — needs critical mass of vault content to avoid noise
+- Smart template adaptation — current 12-template system covers all use cases adequately
+- Knowledge graph with typed, weighted relationships — deferred to v2
 
 ## Context
 
 ### Current State
-The vault is a well-structured but empty Obsidian starter kit. It has:
-- PARA folder hierarchy (00-Inbox through 04-Archive)
-- 12 templates (Project, Area, Resource, Tool, Zettel, Person, Decision, Meeting, Code Snippet, Daily Note, Weekly Review, Monthly Review)
-- 8 Maps of Content (Projects, Areas, Resources, Tools, People, Code, Meetings, Decisions)
-- Full system documentation (Home.md, START HERE.md, Workflow Guide.md, Tag Conventions.md)
-- CLAUDE.md with conventions for Claude Code integration
-- All content currently in German — scheduled for full English rewrite
+Shipped v1.0 with ~25,246 LOC across markdown, CJS modules, and JSON.
+Tech stack: Node.js (zero external deps for core), @huggingface/transformers (optional, for embeddings), SQLite (node:sqlite built-in).
+
+**Skills available:** /create, /daily, /connect, /health, /scan, /search, /memory
+**Infrastructure:** vault-index.json, link-map.json, tag-index.json, scan-state.json, embeddings.db
+**Memory:** MEMORY.md (working), insights.md (long-term), project-{name}.md (per-project)
 
 ### Design Philosophy
 - **Markdown-first**: All knowledge lives in plain markdown files. JSON caches are derivative, regenerable, invisible to Obsidian users.
@@ -60,19 +59,19 @@ The vault is a well-structured but empty Obsidian starter kit. It has:
 - **Propose, don't override**: Claude suggests, explains, and offers actions. It never silently overrides user intent. Low-risk auto-actions (tags, metadata) are acceptable; structural changes require confirmation.
 
 ### Tiered Understanding Model
-| Level | What Claude understands | Source |
-|-------|------------------------|--------|
-| 1 — Explicit | Frontmatter, tags, wiki-links, folder location | Direct file parsing |
-| 2 — Semantic | Topics, themes, concepts inferred from note content | Content analysis |
-| 3 — Relational | Cross-vault patterns, clusters, contradictions, knowledge gaps | Graph analysis |
+| Level | What Claude understands | Source | Status |
+|-------|------------------------|--------|--------|
+| 1 — Explicit | Frontmatter, tags, wiki-links, folder location | Direct file parsing | ✓ v1.0 |
+| 2 — Semantic | Topics, themes, concepts inferred from note content | Embedding-based search | ✓ v1.0 |
+| 3 — Relational | Cross-vault patterns, clusters, contradictions, knowledge gaps | Graph analysis | Planned |
 
 ### Memory Architecture
-| Layer | Persistence | Content | Update frequency |
-|-------|------------|---------|-----------------|
-| Session memory | Current session only | Active conversation context | Continuous |
-| Working memory | .claude/ files | Current priorities, active projects, recent changes | Per session start |
-| Long-term summary | .claude/ files | Distilled patterns, recurring themes, organizational insights | Weekly or on significant change |
-| Project-specific | .claude/ per-project files | Project state, decisions, blockers, context | Per project interaction |
+| Layer | Persistence | Content | Status |
+|-------|------------|---------|--------|
+| Session memory | Current session only | Active conversation context | ✓ v1.0 |
+| Working memory | MEMORY.md + topic files | Current priorities, active projects, recent changes | ✓ v1.0 |
+| Long-term summary | insights.md | Distilled patterns, recurring themes, organizational insights | ✓ v1.0 |
+| Project-specific | project-{name}.md | Project state, decisions, blockers, context | ✓ v1.0 |
 
 ### Target Audience
 Open-source template for anyone who wants an AI-driven second brain. Must work well without Claude (standard Obsidian vault) but becomes significantly more powerful with Claude as the cognitive engine.
@@ -89,16 +88,16 @@ Open-source template for anyone who wants an AI-driven second brain. Must work w
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Full English rewrite | Vault is open-source template for international audience | — Pending |
-| Claude Code skills as implementation | Structured, versioned, shareable commands vs. CLAUDE.md instructions alone | — Pending |
-| Markdown-first + JSON cache | Obsidian compatibility preserved, cache is regenerable, not a dependency | — Pending |
-| Tiered semantic understanding | Balance between intelligence depth and computational cost | — Pending |
-| Layered memory architecture | Compressed high-signal memory vs. raw context dumping | — Pending |
-| Auto for low-risk, propose for structural | Balance autonomy with user trust — tags/metadata auto, moves/merges proposed | — Pending |
-| Typed weighted relationships | Beyond plain wiki-links, but as AI metadata layer not cluttering markdown | — Pending |
-| Emergent structure proposals | Claude proposes new MOCs/Areas when patterns are strong, doesn't force them | — Pending |
-| Scale-ready from day one | Design for 5,000+ notes even though starting near zero | — Pending |
-| Evolution governance | Content evolves freely, structure intentionally, system rules governed | — Pending |
+| Full English rewrite | Vault is open-source template for international audience | ✓ Good — clean English vault, Dataview preserved |
+| Claude Code skills as implementation | Structured, versioned, shareable commands vs. CLAUDE.md instructions alone | ✓ Good — 7 skills shipped, clear separation of concerns |
+| Markdown-first + JSON cache | Obsidian compatibility preserved, cache is regenerable, not a dependency | ✓ Good — .gitignore'd indexes, zero Obsidian breakage |
+| Zero external dependencies for core | Hand-rolled YAML parser, regex-based scanner vs. unified/gray-matter | ✓ Good — no ESM issues, fast startup, ~15ms full scan |
+| Layered memory architecture | Compressed high-signal memory vs. raw context dumping | ✓ Good — 4 layers active, confidence scoring works |
+| Auto for low-risk, propose for structural | Balance autonomy with user trust — tags/metadata auto, moves/merges proposed | ✓ Good — governance system enforced consistently |
+| SQLite for embeddings | node:sqlite built-in, no external DB dependency, BLOB storage for vectors | ✓ Good — <5ms search at vault scale |
+| Dynamic import() for ESM modules | Transformers.js is ESM-only, CJS codebase needs compatibility | ✓ Good — graceful degradation when not installed |
+| Scale-ready from day one | Design for 5,000+ notes even though starting near zero | ✓ Good — incremental scan, hash-based change detection |
+| Evolution governance | Content evolves freely, structure intentionally, system rules governed | ✓ Good — three zones, clear classification |
 
 ---
-*Last updated: 2026-03-07 after initialization*
+*Last updated: 2026-03-07 after v1.0 milestone*
