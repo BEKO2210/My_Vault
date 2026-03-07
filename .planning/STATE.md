@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-03-07T17:01:24Z"
+last_updated: "2026-03-07T17:26:15Z"
 progress:
   total_phases: 4
   completed_phases: 4
-  total_plans: 13
-  completed_plans: 13
+  total_plans: 14
+  completed_plans: 14
 ---
 
 # Project State
@@ -18,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-07)
 
 **Core value:** Claude autonomously maintains, connects, and evolves the knowledge base so the user can focus on thinking and creating -- not filing and organizing.
-**Current focus:** Phase 4 complete: Deep Memory & Semantic Search (3 of 3 plans done). Ready for Phase 5.
+**Current focus:** Phase 4 complete: Deep Memory & Semantic Search (4 of 4 plans done, includes gap-closure plan). Ready for Phase 5.
 
 ## Current Position
 
 Phase: 4 of 5 (Deep Memory & Semantic Search) -- COMPLETE
-Plan: 3 of 3 in current phase
-Status: Phase 04 complete, ready for Phase 05
-Last activity: 2026-03-07 -- Completed 04-03-PLAN.md (/scan embedding sync integration + Phase 4 verification)
+Plan: 4 of 4 in current phase
+Status: Phase 04 complete (gap-closure plan 04-04 done), ready for Phase 05
+Last activity: 2026-03-07 -- Completed 04-04-PLAN.md (memory-utils.cjs wiring bug fixes + SKILL.md path corrections)
 
 Progress: [##########] 100% (Phases 1-4 complete)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 13
+- Total plans completed: 14
 - Average duration: 4min
-- Total execution time: 0.90 hours
+- Total execution time: 0.93 hours
 
 **By Phase:**
 
@@ -43,10 +43,10 @@ Progress: [##########] 100% (Phases 1-4 complete)
 | 1 - Foundation | 4 | 16min | 4min |
 | 2 - Scanning Engine | 2 | 8min | 4min |
 | 3 - Core Skills & Working Memory | 4 | 15min | 4min |
-| 4 - Deep Memory & Semantic Search | 3 | 15min | 5min |
+| 4 - Deep Memory & Semantic Search | 4 | 17min | 4min |
 
 **Recent Trend:**
-- Last 5 plans: 03-01 (5min), 03-04 (4min), 04-01 (5min), 04-02 (4min), 04-03 (6min)
+- Last 5 plans: 03-04 (4min), 04-01 (5min), 04-02 (4min), 04-03 (6min), 04-04 (2min)
 - Trend: Steady
 
 *Updated after each plan completion*
@@ -102,6 +102,8 @@ Recent decisions affecting current work:
 - [Phase 04-01]: package.json placed at vault root (standard Node.js convention, Obsidian ignores non-markdown files)
 - [04-03]: scanWithEmbeddings() is a separate async export -- existing sync scan() left unchanged for backward compatibility
 - [04-03]: Embedding sync uses try/catch require for embedder.cjs -- no hard dependency between scan and search skills
+- [04-04]: Backward-compatible fallback in distillInsights() -- accepts both object and array vaultIndex formats
+- [04-04]: getEmbeddingStatus() called via require() inside try/catch to preserve graceful degradation
 
 ### Pending Todos
 
@@ -116,5 +118,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-07
-Stopped at: Completed 04-03-PLAN.md (/scan embedding sync integration + Phase 4 verification). Phase 4 complete.
+Stopped at: Completed 04-04-PLAN.md (gap-closure: memory-utils.cjs wiring bugs + SKILL.md paths). Phase 4 fully complete.
 Resume file: None
