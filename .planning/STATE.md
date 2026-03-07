@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-03-07T16:56:00.860Z"
+last_updated: "2026-03-07T16:56:06.033Z"
 progress:
   total_phases: 4
   completed_phases: 3
@@ -50,7 +50,6 @@ Progress: [#########.] 92%
 - Trend: Steady
 
 *Updated after each plan completion*
-| Phase 04 P01 | 5min | 3 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -98,6 +97,9 @@ Recent decisions affecting current work:
 - [04-02]: Dominant tags defined as top 20% by note count (minimum 3 notes) for organizational pattern detection
 - [04-02]: Project lessons distilled at confidence 0.6 (higher than default 0.5) as concrete observations
 - [Phase 04-01]: Dynamic import() wraps @huggingface/transformers (ESM-only) from CJS with try/catch for graceful degradation
+- [Phase 04-01]: SQLite BLOB storage for Float32Array embeddings using node:sqlite built-in (no external DB dependency)
+- [Phase 04-01]: Brute-force cosine similarity sufficient for vault-scale search (<5ms for 5000 vectors at 384-dim)
+- [Phase 04-01]: package.json placed at vault root (standard Node.js convention, Obsidian ignores non-markdown files)
 
 ### Pending Todos
 
@@ -112,5 +114,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-07
-Stopped at: Completed 04-02-PLAN.md (Memory management + /memory skill)
+Stopped at: Completed 04-01-PLAN.md (Semantic search infrastructure: embedder.cjs, search-utils.cjs, /search SKILL.md)
 Resume file: None

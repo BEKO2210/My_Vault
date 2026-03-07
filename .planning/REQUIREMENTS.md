@@ -40,7 +40,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **CONN-02**: /connect suggests new wiki-links with evidence explaining why notes are related
 - [x] **CONN-03**: /health detects orphan notes (0-1 connections) and suggests links
 - [x] **CONN-04**: /health detects broken wiki-links (targets that don't exist) and suggests fixes
-- [ ] **CONN-05**: Semantic search finds notes by meaning, not just keyword matching
+- [x] **CONN-05**: Semantic search finds notes by meaning, not just keyword matching
 
 ### Memory & Context
 
@@ -126,7 +126,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CONN-02 | Phase 3 | Complete |
 | CONN-03 | Phase 3 | Complete |
 | CONN-04 | Phase 3 | Complete |
-| CONN-05 | Phase 4 | Pending |
+| CONN-05 | Phase 4 | Complete |
 | MEM-01 | Phase 3 | Complete |
 | MEM-02 | Phase 3 | Complete |
 | MEM-03 | Phase 3 | Complete |
