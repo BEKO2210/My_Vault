@@ -47,8 +47,8 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **MEM-01**: Working memory persists across sessions via MEMORY.md + topic files in .claude/memory/
 - [x] **MEM-02**: Session start loads vault awareness (active projects, recent changes, priorities)
 - [x] **MEM-03**: Four-layer memory architecture implemented (session, working, long-term summary, project-specific)
-- [ ] **MEM-04**: Long-term summary memory distills patterns, recurring themes, and organizational insights
-- [ ] **MEM-05**: Project-specific memory tracks per-project state, decisions, and context
+- [x] **MEM-04**: Long-term summary memory distills patterns, recurring themes, and organizational insights
+- [x] **MEM-05**: Project-specific memory tracks per-project state, decisions, and context
 
 ### Proactive Intelligence
 
@@ -130,8 +130,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | MEM-01 | Phase 3 | Complete |
 | MEM-02 | Phase 3 | Complete |
 | MEM-03 | Phase 3 | Complete |
-| MEM-04 | Phase 4 | Pending |
-| MEM-05 | Phase 4 | Pending |
+| MEM-04 | Phase 4 | Complete |
+| MEM-05 | Phase 4 | Complete |
 | PROA-01 | Phase 5 | Pending |
 | PROA-02 | Phase 5 | Pending |
 | PROA-03 | Phase 5 | Pending |

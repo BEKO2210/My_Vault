@@ -80,10 +80,12 @@ Plans:
   1. Long-term summary memory distills recurring themes, organizational patterns, and insights -- and this knowledge persists across weeks of sessions
   2. Project-specific memory tracks per-project state, decisions, blockers, and context -- accessible when the user returns to that project
   3. User can search for a concept (e.g., "notes about productivity systems") and get relevant results even when the exact term does not appear in those notes
-**Plans**: TBD
+**Plans**: 3 plans in 2 waves
 
 Plans:
-- [ ] 04-01: TBD
+- [x] 04-01-PLAN.md -- Embedding infrastructure + /search skill (embedder.cjs, search-utils.cjs, npm setup)
+- [x] 04-02-PLAN.md -- Memory management + /memory skill (memory-utils.cjs, insights.md, CLAUDE.md Layer 3-4 activation)
+- [ ] 04-03-PLAN.md -- /scan embedding sync integration + verification checkpoint
 
 ### Phase 5: Proactive Intelligence
 **Goal**: The vault actively works for the user -- surfacing priorities, classifying inbox items, synthesizing knowledge, and maintaining consistency without being asked
