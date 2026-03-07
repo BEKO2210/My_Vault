@@ -48,11 +48,11 @@ Plans:
   3. link-map.json accurately maps every wiki-link to its source and target note
   4. tag-index.json maps every tag to the notes that use it, with no missing entries
   5. /scan reports a summary of changes (added, modified, deleted files) after each run
-**Plans**: TBD
+**Plans**: 2 plans in 2 waves
 
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
+- [ ] 02-01-PLAN.md -- Level 1 parser, scanner engine, vault-index.json, scan-state.json
+- [ ] 02-02-PLAN.md -- Derived indexes (link-map, tag-index), /scan skill definition, .gitignore
 
 ### Phase 3: Core Skills & Working Memory
 **Goal**: Users can create notes, generate daily notes, discover connections, and check vault health through Claude Code skills -- and Claude remembers context across sessions
@@ -109,7 +109,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Vault Preparation | 4/4 | Complete | 2026-03-07 |
-| 2. Scanning Engine & Cache Infrastructure | 0/? | Not started | - |
+| 2. Scanning Engine & Cache Infrastructure | 0/2 | Planned | - |
 | 3. Core Skills & Working Memory | 0/? | Not started | - |
 | 4. Deep Memory & Semantic Search | 0/? | Not started | - |
 | 5. Proactive Intelligence | 0/? | Not started | - |
