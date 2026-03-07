@@ -67,7 +67,7 @@ Plans:
 **Plans**: 4 plans in 2 waves
 
 Plans:
-- [ ] 03-01-PLAN.md -- /create and /daily skills (create-utils.cjs, daily-utils.cjs, SKILL.md definitions)
+- [x] 03-01-PLAN.md -- /create and /daily skills (create-utils.cjs, daily-utils.cjs, SKILL.md definitions)
 - [x] 03-02-PLAN.md -- /connect and /health skills (connect-utils.cjs, health-utils.cjs, SKILL.md definitions)
 - [ ] 03-03-PLAN.md -- Working memory system (MEMORY.md, topic files, CLAUDE.md memory architecture update)
 - [ ] 03-04-PLAN.md -- Verification checkpoint (automated tests + Obsidian compatibility)
@@ -111,6 +111,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 |-------|----------------|--------|-----------|
 | 1. Foundation & Vault Preparation | 4/4 | Complete | 2026-03-07 |
 | 2. Scanning Engine & Cache Infrastructure | 2/2 | Complete | 2026-03-07 |
-| 3. Core Skills & Working Memory | 2/4 | In progress | - |
+| 3. Core Skills & Working Memory | 3/4 | In progress | - |
 | 4. Deep Memory & Semantic Search | 0/? | Not started | - |
 | 5. Proactive Intelligence | 0/? | Not started | - |

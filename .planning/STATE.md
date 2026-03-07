@@ -86,6 +86,11 @@ Recent decisions affecting current work:
 - [03-02]: Link adjacency deduplicates evidence per shared target to avoid inflated scores
 - [03-02]: classifyFix requires single suggestion AND distance <= 1 for auto-fix (conservative to avoid false corrections)
 - [03-02]: suggestFixes returns structured objects {name, distance} for downstream classifyFix consumption
+- [03-01]: Template-to-folder mapping encodes all 12 CLAUDE.md types as a single TEMPLATE_MAP object
+- [03-01]: Date arithmetic uses noon anchor (T12:00:00) to avoid timezone-induced date shifts
+- [03-01]: Templater-style {{date:FORMAT}} variants handled alongside standard {{date}} substitution
+- [03-01]: daily-utils.cjs re-exports getDateVars and substituteVariables from create-utils.cjs to avoid duplication
+- [03-01]: Rollover deduplication compares task text after stripping (from [[...]]) suffix
 
 ### Pending Todos
 
@@ -100,5 +105,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-07
-Stopped at: Completed 03-02-PLAN.md (/connect and /health skills: connection discovery and vault health diagnostics)
+Stopped at: Completed 03-01-PLAN.md (/create and /daily skills: template-based note creation with rollover)
 Resume file: None

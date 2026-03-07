@@ -29,10 +29,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Note Creation & Workflow
 
-- [ ] **NOTE-01**: /create skill selects appropriate template based on user intent
-- [ ] **NOTE-02**: /create fills frontmatter, substitutes template variables, and suggests wiki-links to existing notes
-- [ ] **NOTE-03**: /create places new note in correct folder per template conventions
-- [ ] **NOTE-04**: /daily skill creates today's daily note with template and rolls over open items from previous day
+- [x] **NOTE-01**: /create skill selects appropriate template based on user intent
+- [x] **NOTE-02**: /create fills frontmatter, substitutes template variables, and suggests wiki-links to existing notes
+- [x] **NOTE-03**: /create places new note in correct folder per template conventions
+- [x] **NOTE-04**: /daily skill creates today's daily note with template and rolls over open items from previous day
 
 ### Connection Intelligence
 
@@ -118,10 +118,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SCAN-05 | Phase 2 | Complete |
 | SCAN-06 | Phase 2 | Complete |
 | SCAN-07 | Phase 2 | Complete |
-| NOTE-01 | Phase 3 | Pending |
-| NOTE-02 | Phase 3 | Pending |
-| NOTE-03 | Phase 3 | Pending |
-| NOTE-04 | Phase 3 | Pending |
+| NOTE-01 | Phase 3 | Complete |
+| NOTE-02 | Phase 3 | Complete |
+| NOTE-03 | Phase 3 | Complete |
+| NOTE-04 | Phase 3 | Complete |
 | CONN-01 | Phase 3 | Complete |
 | CONN-02 | Phase 3 | Complete |
 | CONN-03 | Phase 3 | Complete |
