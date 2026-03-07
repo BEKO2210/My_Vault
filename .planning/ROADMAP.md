@@ -3,7 +3,7 @@
 ## Milestones
 
 - ✅ **v1.0 MVP** — Phases 1-4 (shipped 2026-03-07)
-- 📋 **v1.1 Proactive Intelligence** — Phase 5 (planned)
+- 📋 **v1.1 Proactive Intelligence** — Phases 5-6 (planned)
 
 ## Phases
 
@@ -22,6 +22,7 @@ See: `.planning/milestones/v1.0-ROADMAP.md` for full details.
 ### 🚧 v1.1 Proactive Intelligence (In Progress)
 
 - [ ] **Phase 5: Proactive Intelligence** — /briefing, /triage, /synthesize, /maintain skills for autonomous vault care
+- [ ] **Phase 6: Gap Closure** — Fix /maintain and /triage integration bugs found by milestone audit
 
 ## Phase Details
 
@@ -43,6 +44,20 @@ Plans:
 - [x] 05-03-PLAN.md — /synthesize skill: topic-based knowledge synthesis with wiki-link citations
 - [ ] 05-04-PLAN.md — /maintain skill: vault consistency auditing (frontmatter, staleness, outdated references)
 
+### Phase 6: Gap Closure — Fix /maintain and /triage Bugs
+**Goal**: Close all gaps identified by milestone audit — fix broken outdated reference detection, false-positive stale project reporting, and review-type triage routing
+**Depends on**: Phase 5
+**Requirements**: PROA-08, PROA-09
+**Gap Closure:** Closes gaps from v1.1-MILESTONE-AUDIT.md
+**Success Criteria** (what must be TRUE):
+  1. `getOutdatedReferences` correctly reads `link.targetPath` from link-map.json and returns actual outdated references
+  2. `getStaleProjects` skips template files (05 - Templates/) — no false positives
+  3. `getTargetFolder('review')` returns a valid target folder instead of null
+**Plans:** 0/1 plans executed
+
+Plans:
+- [ ] 06-01-PLAN.md — Fix maintain-utils (PROA-09 resolvedPath→targetPath, PROA-08 isTemplate guard) and triage review-type routing
+
 ## Progress
 
 | Phase | Milestone | Plans Complete | Status | Completed |
@@ -52,3 +67,4 @@ Plans:
 | 3. Core Skills & Working Memory | v1.0 | 4/4 | Complete | 2026-03-07 |
 | 4. Deep Memory & Semantic Search | v1.0 | 4/4 | Complete | 2026-03-07 |
 | 5. Proactive Intelligence | v1.1 | 3/4 | In Progress | - |
+| 6. Gap Closure | v1.1 | 0/1 | Pending | - |
