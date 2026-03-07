@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-07T15:18:43Z"
+last_updated: "2026-03-07T15:21:30Z"
 progress:
   total_phases: 5
   completed_phases: 2
   total_plans: 7
-  completed_plans: 7
+  completed_plans: 9
 ---
 
 # Project State
@@ -18,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-07)
 
 **Core value:** Claude autonomously maintains, connects, and evolves the knowledge base so the user can focus on thinking and creating -- not filing and organizing.
-**Current focus:** Phase 3 in progress: Core Skills & Working Memory (1 of 4 plans done)
+**Current focus:** Phase 3 in progress: Core Skills & Working Memory (3 of 4 plans done)
 
 ## Current Position
 
 Phase: 3 of 5 (Core Skills & Working Memory)
-Plan: 1 of 4 in current phase
+Plan: 3 of 4 in current phase
 Status: Executing Phase 03
-Last activity: 2026-03-07 -- Completed 03-03-PLAN.md (Working memory system: MEMORY.md, topic files, memory architecture)
+Last activity: 2026-03-07 -- Completed 03-01-PLAN.md (/create and /daily skills: template-based note creation with rollover)
 
-Progress: [#####.....] 47%
+Progress: [######....] 60%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 7
+- Total plans completed: 9
 - Average duration: 4min
-- Total execution time: 0.43 hours
+- Total execution time: 0.58 hours
 
 **By Phase:**
 
@@ -42,10 +42,10 @@ Progress: [#####.....] 47%
 |-------|-------|-------|----------|
 | 1 - Foundation | 4 | 16min | 4min |
 | 2 - Scanning Engine | 2 | 8min | 4min |
-| 3 - Core Skills & Working Memory | 1 | 2min | 2min |
+| 3 - Core Skills & Working Memory | 3 | 11min | 4min |
 
 **Recent Trend:**
-- Last 5 plans: 01-04 (3min), 02-01 (6min), 02-02 (2min), 03-03 (2min)
+- Last 5 plans: 02-01 (6min), 02-02 (2min), 03-03 (2min), 03-02 (4min), 03-01 (5min)
 - Trend: Steady
 
 *Updated after each plan completion*
@@ -82,6 +82,10 @@ Recent decisions affecting current work:
 - [03-03]: MEMORY.md at vault root (32 lines) with 50-line cap enforced by rewrite-not-append pattern
 - [03-03]: Memory writes triggered by significant actions only (project changes, confirmed preferences), not routine operations
 - [03-03]: Layers 3-4 documented as Phase 4 stubs with explicit extension point file paths (insights.md, project-{name}.md)
+- [03-02]: MOC/system file exclusion uses path prefix (06 - Atlas/) plus named file checks for Home, START HERE, etc.
+- [03-02]: Link adjacency deduplicates evidence per shared target to avoid inflated scores
+- [03-02]: classifyFix requires single suggestion AND distance <= 1 for auto-fix (conservative to avoid false corrections)
+- [03-02]: suggestFixes returns structured objects {name, distance} for downstream classifyFix consumption
 
 ### Pending Todos
 
@@ -96,5 +100,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-07
-Stopped at: Completed 03-03-PLAN.md (Working memory system: MEMORY.md, topic files, memory architecture)
+Stopped at: Completed 03-02-PLAN.md (/connect and /health skills: connection discovery and vault health diagnostics)
 Resume file: None
