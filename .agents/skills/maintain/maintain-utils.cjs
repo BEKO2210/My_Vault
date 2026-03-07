@@ -331,6 +331,9 @@ function getStaleProjects(vaultIndex, staleDays) {
   const stale = [];
 
   for (const [notePath, noteData] of Object.entries(notes)) {
+    // Skip template files (e.g., 05 - Templates/Project.md)
+    if (noteData.isTemplate) continue;
+
     const fm = noteData.frontmatter || {};
 
     // Only projects
@@ -381,11 +384,11 @@ function getOutdatedReferences(vaultIndex, linkMap) {
   const seen = new Set(); // Deduplicate source->target pairs
 
   for (const link of links) {
-    if (!link.resolved || !link.resolvedPath) continue;
+    if (!link.resolved || !link.targetPath) continue;
 
-    const targetPath = link.resolvedPath.replace(/\\/g, '/');
+    const targetPath = link.targetPath.replace(/\\/g, '/');
     const sourcePath = (link.source || '').replace(/\\/g, '/');
-    const targetNote = notes[targetPath] || notes[link.resolvedPath];
+    const targetNote = notes[targetPath] || notes[link.targetPath];
 
     if (!targetNote) continue;
 
