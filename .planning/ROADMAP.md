@@ -64,12 +64,13 @@ Plans:
   3. User invokes /connect on a note and gets suggested wiki-links with evidence explaining why each related note is relevant (based on shared tags and explicit links)
   4. User invokes /health and gets a report listing orphan notes (0-1 connections) and broken wiki-links with suggested fixes
   5. After closing and reopening Claude Code, Claude knows the active projects, recent changes, and current priorities without the user re-explaining context
-**Plans**: TBD
+**Plans**: 4 plans in 2 waves
 
 Plans:
-- [ ] 03-01: TBD
-- [ ] 03-02: TBD
-- [ ] 03-03: TBD
+- [ ] 03-01-PLAN.md -- /create and /daily skills (create-utils.cjs, daily-utils.cjs, SKILL.md definitions)
+- [ ] 03-02-PLAN.md -- /connect and /health skills (connect-utils.cjs, health-utils.cjs, SKILL.md definitions)
+- [ ] 03-03-PLAN.md -- Working memory system (MEMORY.md, topic files, CLAUDE.md memory architecture update)
+- [ ] 03-04-PLAN.md -- Verification checkpoint (automated tests + Obsidian compatibility)
 
 ### Phase 4: Deep Memory & Semantic Search
 **Goal**: Claude develops long-term understanding of vault patterns and can find notes by meaning, not just keywords -- transitioning from explicit data to semantic intelligence
