@@ -60,7 +60,7 @@ Claude follows these steps when `/triage` is invoked:
 4. **Empty inbox check:** If no inbox notes are found, report: "Inbox is clear -- nothing to triage." and stop.
 
 5. **Classify each note.** For each inbox note, Claude reads the full content and determines:
-   - **Note type** -- one of the 12 valid types: project, area, resource, tool, person, meeting, decision, code-snippet, zettel, daily, review
+   - **Note type** -- one of the 11 valid types: project, area, resource, tool, person, meeting, decision, code-snippet, zettel, daily, review
    - **Confidence** -- high (>= 0.8), medium (0.5 - 0.8), or low (< 0.5) based on signal strength
    - **Target folder** -- via `getTargetFolder(type)` from triage-utils.cjs
    - **Suggested tags** -- based on content analysis (lowercase, English)

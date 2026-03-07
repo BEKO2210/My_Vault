@@ -289,10 +289,17 @@ function moveNote(vaultRoot, sourcePath, targetFolder) {
   };
 }
 
+// Fallback for frontmatter types not in TEMPLATE_MAP
+// (e.g., 'review' maps to 'weekly'/'monthly' in TEMPLATE_MAP but is a single frontmatter type)
+const TYPE_FOLDER_FALLBACK = {
+  'review': '00 - Inbox',
+};
+
 /**
  * Get the canonical target folder for a given note type.
  *
  * Delegates to create-utils.cjs getTemplateInfo for consistent mapping.
+ * Falls back to TYPE_FOLDER_FALLBACK for types not in TEMPLATE_MAP.
  * Returns the folder string, or null if the type is unknown.
  *
  * @param {string} type - Note type (project, tool, zettel, etc.)
@@ -300,8 +307,8 @@ function moveNote(vaultRoot, sourcePath, targetFolder) {
  */
 function getTargetFolder(type) {
   const info = getTemplateInfo(type);
-  if (!info) return null;
-  return info.folder;
+  if (info) return info.folder;
+  return TYPE_FOLDER_FALLBACK[type] || null;
 }
 
 module.exports = {
