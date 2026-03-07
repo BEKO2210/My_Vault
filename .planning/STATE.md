@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-07T13:57:22.000Z"
+last_updated: "2026-03-07T14:05:59.512Z"
 progress:
   total_phases: 2
-  completed_phases: 1
-  total_plans: 5
-  completed_plans: 5
+  completed_phases: 2
+  total_plans: 6
+  completed_plans: 6
 ---
 
 # Project State
@@ -18,33 +18,33 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-07)
 
 **Core value:** Claude autonomously maintains, connects, and evolves the knowledge base so the user can focus on thinking and creating -- not filing and organizing.
-**Current focus:** Phase 2 in progress: Scanning Engine & Cache Infrastructure (Plan 1 of 2 complete)
+**Current focus:** Phase 2 complete: Scanning Engine & Cache Infrastructure (2 of 2 plans done)
 
 ## Current Position
 
-Phase: 2 of 5 (Scanning Engine & Cache Infrastructure) -- IN PROGRESS
-Plan: 1 of 2 in current phase
-Status: Plan 02-01 Complete
-Last activity: 2026-03-07 -- Completed 02-01-PLAN.md (Level 1 parser, scanner engine, vault-index.json, scan-state.json)
+Phase: 2 of 5 (Scanning Engine & Cache Infrastructure) -- COMPLETE
+Plan: 2 of 2 in current phase
+Status: Phase 02 Complete
+Last activity: 2026-03-07 -- Completed 02-02-PLAN.md (Derived indexes: link-map, tag-index, /scan skill, .gitignore)
 
-Progress: [###.......] 33%
+Progress: [####......] 40%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
+- Total plans completed: 6
 - Average duration: 4min
-- Total execution time: 0.37 hours
+- Total execution time: 0.40 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1 - Foundation | 4 | 16min | 4min |
-| 2 - Scanning Engine | 1 | 6min | 6min |
+| 2 - Scanning Engine | 2 | 8min | 4min |
 
 **Recent Trend:**
-- Last 5 plans: 01-02 (3min), 01-03 (5min), 01-04 (3min), 02-01 (6min)
+- Last 5 plans: 01-03 (5min), 01-04 (3min), 02-01 (6min), 02-02 (2min)
 - Trend: Steady
 
 *Updated after each plan completion*
@@ -74,6 +74,10 @@ Recent decisions affecting current work:
 - [02-01]: Obsidian escaped pipe (\|) treated as alias delimiter in wiki-links
 - [02-01]: Templates scanned but flagged with isTemplate: true for downstream filtering
 - [02-01]: Inline #tags extracted separately from frontmatter tags, merged into allTags array
+- [02-02]: Indexer operates purely in-memory on vaultIndex data -- no file I/O in buildLinkMap or buildTagIndex
+- [02-02]: Case-insensitive link resolution matches Obsidian behavior via name.toLowerCase() lookup map
+- [02-02]: Tag index sorted per-tag for deterministic output across runs
+- [02-02]: Index files gitignored as derived data -- regenerable by running /scan
 
 ### Pending Todos
 
@@ -88,5 +92,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-07
-Stopped at: Completed 02-01-PLAN.md (Level 1 parser, scanner engine, vault-index.json, scan-state.json)
+Stopped at: Completed 02-02-PLAN.md (Derived indexes: link-map, tag-index, /scan skill, .gitignore)
 Resume file: None

@@ -22,10 +22,10 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **SCAN-01**: Level 1 parser extracts frontmatter, wiki-links, tags, and headings from all .md files
 - [x] **SCAN-02**: Incremental scanning with content hashing detects changed files without full vault re-reads
 - [x] **SCAN-03**: vault-index.json contains per-note metadata (path, type, tags, links, headings, hash, mtime)
-- [ ] **SCAN-04**: link-map.json maps every wiki-link to source and target notes
-- [ ] **SCAN-05**: tag-index.json maps every tag to the notes that use it
+- [x] **SCAN-04**: link-map.json maps every wiki-link to source and target notes
+- [x] **SCAN-05**: tag-index.json maps every tag to the notes that use it
 - [x] **SCAN-06**: scan-state.json tracks last scan time and per-file hashes for incremental updates
-- [ ] **SCAN-07**: /scan skill triggers manual re-index and reports changes
+- [x] **SCAN-07**: /scan skill triggers manual re-index and reports changes
 
 ### Note Creation & Workflow
 
@@ -114,10 +114,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SCAN-01 | Phase 2 | Complete |
 | SCAN-02 | Phase 2 | Complete |
 | SCAN-03 | Phase 2 | Complete |
-| SCAN-04 | Phase 2 | Pending |
-| SCAN-05 | Phase 2 | Pending |
+| SCAN-04 | Phase 2 | Complete |
+| SCAN-05 | Phase 2 | Complete |
 | SCAN-06 | Phase 2 | Complete |
-| SCAN-07 | Phase 2 | Pending |
+| SCAN-07 | Phase 2 | Complete |
 | NOTE-01 | Phase 3 | Pending |
 | NOTE-02 | Phase 3 | Pending |
 | NOTE-03 | Phase 3 | Pending |

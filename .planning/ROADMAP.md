@@ -13,7 +13,7 @@ Firstbrain transforms a plain-markdown Obsidian vault into an AI-native knowledg
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation & Vault Preparation** - English rewrite, governance system, trust infrastructure, Obsidian compatibility
-- [ ] **Phase 2: Scanning Engine & Cache Infrastructure** - Level 1 parser, incremental scanning, JSON indexes, /scan skill
+- [x] **Phase 2: Scanning Engine & Cache Infrastructure** - Level 1 parser, incremental scanning, JSON indexes, /scan skill
 - [ ] **Phase 3: Core Skills & Working Memory** - /create, /daily, /connect, /health skills with cross-session working memory
 - [ ] **Phase 4: Deep Memory & Semantic Search** - Long-term summary memory, project-specific memory, semantic search
 - [ ] **Phase 5: Proactive Intelligence** - /briefing, /triage, /synthesize, /maintain skills for autonomous vault care
@@ -52,7 +52,7 @@ Plans:
 
 Plans:
 - [x] 02-01-PLAN.md -- Level 1 parser, scanner engine, vault-index.json, scan-state.json
-- [ ] 02-02-PLAN.md -- Derived indexes (link-map, tag-index), /scan skill definition, .gitignore
+- [x] 02-02-PLAN.md -- Derived indexes (link-map, tag-index), /scan skill definition, .gitignore
 
 ### Phase 3: Core Skills & Working Memory
 **Goal**: Users can create notes, generate daily notes, discover connections, and check vault health through Claude Code skills -- and Claude remembers context across sessions
@@ -109,7 +109,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Vault Preparation | 4/4 | Complete | 2026-03-07 |
-| 2. Scanning Engine & Cache Infrastructure | 0/2 | Planned | - |
+| 2. Scanning Engine & Cache Infrastructure | 2/2 | Complete | 2026-03-07 |
 | 3. Core Skills & Working Memory | 0/? | Not started | - |
 | 4. Deep Memory & Semantic Search | 0/? | Not started | - |
 | 5. Proactive Intelligence | 0/? | Not started | - |
