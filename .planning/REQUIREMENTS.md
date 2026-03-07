@@ -15,7 +15,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **FOUND-04**: Evolution governance system with three zones (content/structure/system) and explicit rules for each
 - [x] **FOUND-05**: Action classification system (AUTO / PROPOSE / NEVER) codified and enforced
 - [x] **FOUND-06**: Changelog infrastructure (.claude/changelog.md) logging all autonomous actions
-- [ ] **FOUND-07**: Obsidian compatibility checklist verified (graph view, search, Properties panel, Dataview queries)
+- [x] **FOUND-07**: Obsidian compatibility checklist verified (graph view, search, Properties panel, Dataview queries)
 
 ### Scanning & Indexing
 
@@ -110,7 +110,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FOUND-04 | Phase 1 | Complete |
 | FOUND-05 | Phase 1 | Complete |
 | FOUND-06 | Phase 1 | Complete |
-| FOUND-07 | Phase 1 | Pending |
+| FOUND-07 | Phase 1 | Complete |
 | SCAN-01 | Phase 2 | Pending |
 | SCAN-02 | Phase 2 | Pending |
 | SCAN-03 | Phase 2 | Pending |
