@@ -18,3 +18,14 @@ Thumbs.db
 
 # Claude indexes (derived data, regenerable)
 .claude/indexes/
+
+# Node.js dependencies
+node_modules/
+
+# Embedding model cache
+.claude/.models/
+
+# SQLite embedding database (derived data, regenerable)
+.claude/embeddings.db
+.claude/embeddings.db-wal
+.claude/embeddings.db-shm
