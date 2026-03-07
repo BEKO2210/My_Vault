@@ -216,4 +216,48 @@ function scan(vaultRoot, options = {}) {
   }
 }
 
-module.exports = { scan };
+/**
+ * Run scan with post-scan embedding sync.
+ * Wraps the synchronous scan() and adds async embedding generation for changed notes.
+ *
+ * @param {string} vaultRoot - Path to vault root
+ * @param {object} [options] - Same options as scan() (full, verbose, indexDir)
+ * @returns {Promise<object>} Scan results augmented with result.embedding
+ */
+async function scanWithEmbeddings(vaultRoot, options = {}) {
+  const result = scan(vaultRoot, options);
+
+  // If scan failed, return immediately without embedding
+  if (result.error) {
+    return result;
+  }
+
+  // Try to load embedder -- skip gracefully if not available
+  let embedder;
+  try {
+    embedder = require('../search/embedder.cjs');
+  } catch {
+    result.embedding = { skipped: true, reason: 'embedder not available' };
+    return result;
+  }
+
+  try {
+    const resolvedRoot = path.resolve(vaultRoot);
+    const indexDir = options.indexDir || path.join(resolvedRoot, '.claude', 'indexes');
+    const vaultIndex = loadJson(path.join(indexDir, 'vault-index.json'));
+
+    if (!vaultIndex) {
+      result.embedding = { skipped: true, reason: 'vault-index.json not found' };
+      return result;
+    }
+
+    const embedResult = await embedder.syncEmbeddings(resolvedRoot, result, vaultIndex);
+    result.embedding = embedResult;
+  } catch (err) {
+    result.embedding = { skipped: true, reason: err.message };
+  }
+
+  return result;
+}
+
+module.exports = { scan, scanWithEmbeddings };
