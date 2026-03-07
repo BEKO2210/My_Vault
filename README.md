@@ -16,8 +16,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC%20BY--NC%204.0-blue?style=flat-square" alt="License: CC BY-NC 4.0" /></a>
   <a href="https://github.com/BEKO2210/Firstbrain/stargazers"><img src="https://img.shields.io/github/stars/BEKO2210/Firstbrain?style=flat-square" alt="Stars" /></a>
   <a href="https://github.com/BEKO2210/Firstbrain/issues"><img src="https://img.shields.io/github/issues/BEKO2210/Firstbrain?style=flat-square" alt="Issues" /></a>
-  <img src="https://img.shields.io/badge/dependencies-0-brightgreen?style=flat-square" alt="Zero Dependencies" />
-  <img src="https://img.shields.io/badge/skills-7-blueviolet?style=flat-square" alt="7 Skills" />
+  <img src="https://img.shields.io/badge/skills-11-blueviolet?style=flat-square" alt="11 Skills" />
 </p>
 
 <p align="center">
@@ -33,16 +32,17 @@
 
 ## What is Firstbrain?
 
-Firstbrain transforms a plain Obsidian vault into an **AI-native knowledge management system**. Claude Code acts as the cognitive layer — scanning your vault, creating notes from templates, discovering connections between ideas, searching by meaning, and remembering your context across sessions.
+Firstbrain transforms a plain Obsidian vault into an **AI-native knowledge management system**. Claude Code acts as the cognitive layer — scanning your vault, creating notes from templates, discovering connections, searching by meaning, triaging your inbox, synthesizing knowledge, and maintaining consistency — all while remembering your context across sessions.
 
 **Without Claude Code**, it's a beautifully structured Obsidian starter vault with PARA folders, 12 templates, and 8 Maps of Content.
 
 **With Claude Code**, it becomes a second brain that actively works for you.
 
 ```
-"Create a tool note about Docker"     → Claude picks the template, fills metadata, suggests links
-"What did I write about productivity?" → Semantic search finds notes by meaning, not keywords
-"Show me orphan notes"                 → Health check finds disconnected knowledge
+"Create a tool note about Docker"       → Claude picks the template, fills metadata, suggests links
+"What did I write about productivity?"   → Semantic search finds notes by meaning, not keywords
+"Triage my inbox"                        → Classifies notes, suggests folders, auto-tags high-confidence items
+"Give me a briefing"                     → Calm daily summary of changes, priorities, and suggestions
 ```
 
 ---
@@ -51,11 +51,12 @@ Firstbrain transforms a plain Obsidian vault into an **AI-native knowledge manag
 
 | Feature | Description |
 |---------|-------------|
-| **7 Claude Code Skills** | `/create`, `/daily`, `/connect`, `/health`, `/scan`, `/search`, `/memory` |
-| **Zero-Dependency Core** | All scanning, parsing, and indexing runs on Node.js built-ins — no `npm install` required |
+| **11 Claude Code Skills** | `/create`, `/daily`, `/connect`, `/health`, `/scan`, `/search`, `/memory`, `/briefing`, `/triage`, `/synthesize`, `/maintain` |
+| **Zero-Dependency Core** | All scanning, parsing, and indexing runs on Node.js built-ins — no `npm install` required for core |
 | **Incremental Scanning** | SHA-256 content hashing detects changes without re-reading the entire vault |
 | **Semantic Search** | Local embeddings via Transformers.js + SQLite — your notes never leave your machine |
 | **Four-Layer Memory** | Session → Working → Long-term Summary → Project-specific context persistence |
+| **Proactive Intelligence** | Daily briefings, inbox triage, knowledge synthesis, and vault maintenance — Claude works for you |
 | **Evolution Governance** | Three zones (AUTO / PROPOSE / NEVER) control what Claude can do autonomously |
 | **12 Note Templates** | Project, Area, Resource, Tool, Zettel, Person, Decision, Meeting, Code Snippet, Daily, Weekly Review, Monthly Review |
 | **8 Maps of Content** | Navigation hubs for Projects, Areas, Resources, Tools, People, Code, Meetings, Decisions |
@@ -70,102 +71,102 @@ Firstbrain transforms a plain Obsidian vault into an **AI-native knowledge manag
 | Tool | Version | Required |
 |------|---------|----------|
 | [Obsidian](https://obsidian.md) | Latest | Yes |
-| [Claude Code](https://claude.ai/claude-code) | Latest | For AI features |
-| [Node.js](https://nodejs.org) | ≥ 22 | For AI features |
-| [Dataview Plugin](https://github.com/blacksmithgu/obsidian-dataview) | Latest | For auto-lists |
+| [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) | Latest | Yes (for AI features) |
+| [Node.js](https://nodejs.org) | >= 22 | Yes (for AI features) |
 
-### Installation
+### Step 1: Clone & Open in Obsidian
 
 ```bash
-# Clone the repository
 git clone https://github.com/BEKO2210/Firstbrain.git
-
-# Open as vault in Obsidian
-# File → Open Vault → Open folder as vault → Select "Firstbrain"
-
-# Install Dataview plugin
-# Settings → Community Plugins → Browse → Search "Dataview" → Install → Enable
 ```
 
-### Optional: Enable Semantic Search
+Open Obsidian → **Open folder as vault** → select the `Firstbrain` folder.
+
+### Step 2: Install Dataview Plugin
+
+In Obsidian: Settings → Community Plugins → Browse → search **"Dataview"** → Install → Enable.
+
+> Dataview powers the automatic lists on MOC pages and the Home dashboard.
+
+### Step 3: Install Semantic Search (optional)
 
 ```bash
 cd Firstbrain
-npm install    # Installs @huggingface/transformers for local embeddings
+npm install
 ```
 
-> Semantic search runs **100% locally** — no API calls, no data leaves your machine. If you skip this step, `/search` falls back to keyword matching.
+This installs `@huggingface/transformers` for local embeddings. Semantic search runs **100% locally** — no API calls, no data leaves your machine. If you skip this, `/search` falls back to keyword matching.
 
-### First Steps
+### Step 4: Start Claude Code
 
-1. Open `Home.md` — your central dashboard
-2. Read `START HERE.md` — onboarding guide
-3. Start Claude Code in the vault folder: `claude`
-4. Try: *"Create a new project: Learn Rust"*
+Open a terminal in the Firstbrain folder and start Claude Code:
+
+```bash
+cd Firstbrain
+claude
+```
+
+Claude automatically reads `CLAUDE.md` on startup and understands the vault structure, templates, rules, and all 11 skills. No configuration needed — it's ready immediately.
+
+### Step 5: Initialize the Vault Index
+
+In the Claude Code session, type:
+
+```
+/scan
+```
+
+This scans all markdown files and builds the indexes (`vault-index.json`, `link-map.json`, `tag-index.json`). Takes ~15ms. After this, all skills have full vault awareness.
+
+### Step 6: Start Using It
+
+Try these commands in your Claude Code session:
+
+```
+/briefing                              → Daily summary of your vault
+/create a project note: Learn Rust     → Creates note from template
+/health                                → Find orphan notes and broken links
+/search productivity                   → Semantic search across all notes
+/triage                                → Classify and file inbox notes
+/daily                                 → Create today's daily note
+```
+
+Or just talk naturally:
+
+```
+"Create a zettel about why deadlines improve creativity"
+"What do I know about Docker?"
+"Show me my open tasks"
+"Synthesize what I know about marketing"
+"Run a maintenance check on my vault"
+```
 
 ---
 
 ## Skills
 
-Firstbrain ships with **7 Claude Code skills** that understand your vault structure, templates, and conventions.
+Firstbrain ships with **11 Claude Code skills** organized in two tiers.
 
-### `/create` — Create Notes
+### Core Skills (v1.0)
 
-```
-"Create a tool note about Docker"
-"New zettel: Why deadlines improve creativity"
-"Create a decision note about API strategy"
-```
+| Skill | What it does |
+|-------|-------------|
+| **`/create`** | Creates notes from 12 templates. Picks the right template, fills frontmatter, substitutes variables, suggests wiki-links, places file in the correct folder. |
+| **`/daily`** | Creates today's daily note. Rolls over open tasks from the past 7 days with provenance links. |
+| **`/connect`** | Discovers connections between notes via shared tags and link adjacency. Returns scored suggestions with evidence. |
+| **`/health`** | Detects orphan notes (0-1 connections) and broken wiki-links. Suggests fixes with Levenshtein matching. |
+| **`/scan`** | Incrementally scans all markdown files. Builds `vault-index.json`, `link-map.json`, `tag-index.json`. Only re-parses changed files (SHA-256). |
+| **`/search`** | Finds notes by meaning using local embeddings (Transformers.js + SQLite). Falls back to keyword matching if embeddings aren't installed. |
+| **`/memory`** | Memory dashboard — shows active projects, recent insights, organizational patterns across all four memory layers. |
 
-Picks the right template from 12 types, fills frontmatter, substitutes variables, suggests wiki-links, and places the file in the correct folder.
+### Proactive Intelligence Skills (v1.1)
 
-### `/daily` — Daily Notes
-
-```
-"Create today's daily note"
-```
-
-Creates today's daily note with the Daily Note template. Automatically rolls over open tasks from the past 7 days with provenance links back to originating notes.
-
-### `/connect` — Discover Connections
-
-```
-"/connect on Docker note"
-```
-
-Analyzes shared tags and wiki-link adjacency to suggest connections you haven't made yet. Returns scored suggestions with evidence explaining *why* notes are related.
-
-### `/health` — Vault Health Check
-
-```
-"/health"
-```
-
-Detects orphan notes (0–1 connections) and broken wiki-links. Suggests fixes with Levenshtein distance matching. Classifies fixes as AUTO (obvious typos) or PROPOSE (ambiguous matches).
-
-### `/scan` — Index the Vault
-
-```
-"/scan"
-```
-
-Incrementally scans all markdown files, builds `vault-index.json`, `link-map.json`, and `tag-index.json`. Only re-parses changed files using SHA-256 content hashing.
-
-### `/search` — Semantic Search
-
-```
-"Search for notes about productivity systems"
-```
-
-Finds notes by **meaning**, not just keywords. Uses local Transformers.js embeddings stored in SQLite. Falls back to keyword matching (tags + title) if embeddings aren't installed.
-
-### `/memory` — Memory Dashboard
-
-```
-"/memory"
-```
-
-Shows memory status across all four layers: active projects, recent insights, organizational patterns, and distillation triggers. Manage long-term memory and project-specific context.
+| Skill | What it does |
+|-------|-------------|
+| **`/briefing`** | Calm daily executive summary — recent changes, current priorities, neglected items, and actionable suggestions. Read-only, never modifies your vault. |
+| **`/triage`** | Inbox classification — scans `00 - Inbox/`, classifies each note by type, suggests target folder. High-confidence items get auto-tagged, structural changes are proposed for review. |
+| **`/synthesize`** | Topic-based knowledge synthesis — finds all notes related to a topic (by tags, title, semantic similarity), generates a summary zettel with wiki-link citations and AI provenance metadata. |
+| **`/maintain`** | Vault consistency auditing — detects frontmatter issues, tag inconsistencies, stale projects, outdated references. Proposes fixes respecting governance zones. Can auto-fix low-risk issues. |
 
 ---
 
@@ -184,19 +185,24 @@ Firstbrain/
 ├── 06 - Atlas/MOCs/          8 Maps of Content (navigation hubs)
 ├── 07 - Extras/              Attachments, Kanban boards, media
 ├── .agents/skills/           Claude Code skill definitions + utilities
+│   ├── briefing/             Daily executive summary
 │   ├── connect/              Connection discovery engine
 │   ├── create/               Template-based note creation
-│   ├── daily/                Daily note with rollover
+│   ├── daily/                Daily note with task rollover
 │   ├── health/               Orphan + broken link detection
+│   ├── maintain/             Vault consistency auditing
 │   ├── memory/               Four-layer memory management
-│   ├── scan/                 Incremental vault scanner
-│   └── search/               Semantic + keyword search
+│   ├── scan/                 Incremental vault scanner + indexer
+│   ├── search/               Semantic + keyword search
+│   ├── synthesize/           Topic-based knowledge synthesis
+│   └── triage/               Inbox classification and filing
 ├── .claude/                  AI system config, rules, memory
 │   ├── memory/               Working memory + insights + project state
 │   └── rules/                Governance rules (naming, linking, frontmatter)
 ├── CLAUDE.md                 AI-native instructions (loaded on startup)
 ├── Home.md                   Central dashboard
-└── START HERE.md             User onboarding guide
+├── START HERE.md             User onboarding guide
+└── Workflow Guide.md         Daily workflow instructions
 ```
 
 ### Scanning Pipeline
@@ -206,7 +212,7 @@ Markdown Files
      │
      ▼
 ┌─────────┐    ┌──────────┐    ┌───────────────┐
-│ parser  │──▶│ scanner  │────│ vault-index   │
+│ parser  │───▶│ scanner  │────│ vault-index   │
 │   .cjs  │    │   .cjs   │    │   .json       │
 └─────────┘    └──────────┘    └───────────────┘
                     │               │
@@ -268,7 +274,7 @@ Firstbrain implements a **four-layer memory architecture** that gives Claude per
 | Long-term | `insights.md` | After 10+ note changes or topic density triggers |
 | Project | `project-{name}.md` | Per project interaction |
 
-Long-term insights use **confidence scoring** (0.0–1.0) with decay. Entries below 0.3 are pruned. Only insights ≥ 0.5 are surfaced to the user.
+Long-term insights use **confidence scoring** (0.0-1.0) with decay. Entries below 0.3 are pruned. Only insights >= 0.5 are surfaced to the user.
 
 ---
 
@@ -309,14 +315,6 @@ Claude's autonomy is governed by three zones:
 | `Weekly Review` | `00 - Inbox/` | Weekly retrospective and planning |
 | `Monthly Review` | `00 - Inbox/` | Monthly reflection and goal tracking |
 
-### Template Variables
-
-| Variable | Replaced With | Example |
-|----------|---------------|---------|
-| `{{date}}` | Current date | 2026-03-07 |
-| `{{title}}` | Note filename | Docker |
-| `{{time}}` | Current time | 14:30 |
-
 ---
 
 ## Recommended Plugins
@@ -334,7 +332,7 @@ Claude's autonomy is governed by three zones:
 | Component | Technology | Purpose |
 |-----------|-----------|---------|
 | Vault | Obsidian + Markdown | Knowledge storage |
-| AI Layer | Claude Code | Cognitive engine |
+| AI Layer | Claude Code | Cognitive engine (11 skills) |
 | Scanner | Node.js built-ins | File parsing + indexing |
 | Embeddings | Transformers.js (optional) | Semantic vector generation |
 | Vector Store | SQLite (node:sqlite) | Embedding storage + search |
@@ -344,11 +342,9 @@ Claude's autonomy is governed by three zones:
 
 ## Roadmap
 
-- [x] **v1.0 MVP** — Foundation, scanning, core skills, semantic search, memory *(shipped)*
-- [ ] **v1.1 Proactive Intelligence** — `/briefing`, `/triage`, `/synthesize`, `/maintain`
-- [ ] **v2.0** — Advanced connection intelligence, emergent structure, smart templates
-
-See [`.planning/ROADMAP.md`](.planning/ROADMAP.md) for detailed phase breakdown.
+- [x] **v1.0 MVP** — Foundation, scanning, core skills, semantic search, memory *(shipped 2026-03-07)*
+- [x] **v1.1 Proactive Intelligence** — `/briefing`, `/triage`, `/synthesize`, `/maintain` *(shipped 2026-03-08)*
+- [ ] **v2.0** — Knowledge graph, emergent structure proposals, advanced connection intelligence
 
 ---
 
@@ -374,12 +370,6 @@ git push origin feature/my-feature
 [CC BY-NC 4.0](LICENSE) — Free for personal and non-commercial use. For commercial licensing, [contact the author](https://github.com/BEKO2210).
 
 ---
-
-<p align="center">
-  <a href="https://star-history.com/#BEKO2210/Firstbrain&Date">
-    <img src="https://api.star-history.com/svg?repos=BEKO2210/Firstbrain&type=Date" alt="Star History Chart" width="600" />
-  </a>
-</p>
 
 <p align="center">
   <sub>Built with Obsidian + Claude Code</sub>
