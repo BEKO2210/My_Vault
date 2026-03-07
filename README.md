@@ -13,7 +13,7 @@
 
 <p align="center">
   <a href="https://github.com/BEKO2210/Firstbrain/releases"><img src="https://img.shields.io/github/v/tag/BEKO2210/Firstbrain?label=version&style=flat-square&color=blue" alt="Version" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/BEKO2210/Firstbrain?style=flat-square" alt="License" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC%20BY--NC%204.0-blue?style=flat-square" alt="License: CC BY-NC 4.0" /></a>
   <a href="https://github.com/BEKO2210/Firstbrain/stargazers"><img src="https://img.shields.io/github/stars/BEKO2210/Firstbrain?style=flat-square" alt="Stars" /></a>
   <a href="https://github.com/BEKO2210/Firstbrain/issues"><img src="https://img.shields.io/github/issues/BEKO2210/Firstbrain?style=flat-square" alt="Issues" /></a>
   <img src="https://img.shields.io/badge/dependencies-0-brightgreen?style=flat-square" alt="Zero Dependencies" />
@@ -371,7 +371,7 @@ git push origin feature/my-feature
 
 ## License
 
-[MIT](LICENSE) — Take it, use it, make it yours.
+[CC BY-NC 4.0](LICENSE) — Free for personal and non-commercial use. For commercial licensing, [contact the author](https://github.com/BEKO2210).
 
 ---
 
