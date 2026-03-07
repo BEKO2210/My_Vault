@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-03-07)
 ## Current Position
 
 Phase: 1 of 5 (Foundation & Vault Preparation)
-Plan: 3 of 4 in current phase
+Plan: 4 of 4 in current phase
 Status: Executing
-Last activity: 2026-03-07 -- Completed 01-01-PLAN.md (file renames and system doc translation)
+Last activity: 2026-03-07 -- Completed 01-03-PLAN.md (templates and MOCs English translation)
 
-Progress: [##........] 12%
+Progress: [###.......] 18%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
+- Total plans completed: 3
 - Average duration: 4min
-- Total execution time: 0.13 hours
+- Total execution time: 0.22 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 1 - Foundation | 2 | 8min | 4min |
+| 1 - Foundation | 3 | 13min | 4min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (5min), 01-02 (3min)
-- Trend: Starting
+- Last 5 plans: 01-01 (5min), 01-02 (3min), 01-03 (5min)
+- Trend: Steady
 
 *Updated after each plan completion*
 
@@ -52,6 +52,8 @@ Recent decisions affecting current work:
 - [01-02]: CLAUDE.md at 134 lines -- compact but complete, all 6 sections included
 - [01-02]: Governance summary in CLAUDE.md uses table format for quick scanning
 - [01-02]: settings.json emptied since CLAUDE.md now serves that purpose
+- [01-03]: Translated Dataview AS aliases in MOCs (Projekte->Projects) while preserving all FROM/WHERE/SORT clauses
+- [01-03]: Monthly Review: preserved "Zettelkasten" as domain-specific term in "Zettelkasten insights"
 
 ### Pending Todos
 
@@ -66,5 +68,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-07
-Stopped at: Completed 01-01-PLAN.md (file renames and system doc translation)
+Stopped at: Completed 01-03-PLAN.md (templates and MOCs English translation)
 Resume file: None

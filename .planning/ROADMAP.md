@@ -33,9 +33,9 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 4 plans in 3 waves
 
 Plans:
-- [ ] 01-01-PLAN.md -- English rewrite: rename files, update wiki-links, translate system docs
+- [x] 01-01-PLAN.md -- English rewrite: rename files, update wiki-links, translate system docs
 - [x] 01-02-PLAN.md -- AI-native governance: CLAUDE.md rewrite, .claude/rules/, changelog
-- [ ] 01-03-PLAN.md -- English rewrite: translate all 12 templates and 8 MOCs
+- [x] 01-03-PLAN.md -- English rewrite: translate all 12 templates and 8 MOCs
 - [ ] 01-04-PLAN.md -- Obsidian compatibility verification (automated checks + human checkpoint)
 
 ### Phase 2: Scanning Engine & Cache Infrastructure
@@ -108,7 +108,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Vault Preparation | 1/4 | In Progress | - |
+| 1. Foundation & Vault Preparation | 3/4 | In Progress | - |
 | 2. Scanning Engine & Cache Infrastructure | 0/? | Not started | - |
 | 3. Core Skills & Working Memory | 0/? | Not started | - |
 | 4. Deep Memory & Semantic Search | 0/? | Not started | - |
