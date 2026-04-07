@@ -78,7 +78,7 @@ Double-click to start. The launcher checks Node.js, Claude Code CLI, validates t
 ## Skills
 
 <p align="center">
-  <img src="docs/assets/skills-overview.svg" alt="Skills" width="780"/>
+  <img src="docs/assets/skills-v3.svg" alt="Skills" width="780"/>
 </p>
 
 ---
