@@ -92,8 +92,8 @@ The launcher checks for Node.js and Claude Code CLI, validates the vault structu
 
 ```
 Firstbrain/
-├── 00 - Inbox/              Landing zone for new notes and daily notes
-├── 01 - Projects/            Active projects (time-bound, has end date)
+├── 00 - Inbox/              Landing zone -- drop notes, actions, prompts here
+├── 01 - Projects/            Vault notes about projects (plans, status, logs)
 ├── 02 - Areas/               Life areas (ongoing, no end date)
 ├── 03 - Resources/           Knowledge, references, learning material
 ├── 04 - Archive/             Completed or inactive items
@@ -108,14 +108,16 @@ Firstbrain/
 │   ├── health/               Orphan + broken link detection
 │   ├── maintain/             Vault consistency auditing
 │   ├── memory/               Four-layer memory management
-│   ├── process/              Command Processor (prompt execution)
+│   ├── process/              Command Processor (prompt + action execution)
 │   ├── scan/                 Incremental vault scanner + indexer
+│   ├── watch/                Inbox monitor + auto-executor
 │   ├── search/               Semantic + keyword search
 │   ├── synthesize/           Topic-based knowledge synthesis
 │   └── triage/               Inbox classification and filing
 ├── .claude/                  AI system config, rules, memory
 │   ├── memory/               Working memory + insights + project state
 │   └── rules/                Governance rules (naming, linking, frontmatter)
+├── workspace/                Actual code projects (each has own git repo)
 ├── CLAUDE.md                 AI-native instructions (loaded on startup)
 ├── Home.md                   Central dashboard
 ├── START HERE.md             User onboarding guide
