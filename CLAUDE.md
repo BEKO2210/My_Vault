@@ -63,62 +63,82 @@ Persists across sessions via files Claude reads and writes:
 
 ### New User Onboarding (one-time)
 
-Run this as an interactive conversation. Be warm but concise -- no walls of text. Each step is ONE message, wait for response before continuing.
+Interactive conversation. ONE message per step, wait for response. Language is asked FIRST so the rest of the onboarding runs in the user's language.
 
-**Step 1 -- Welcome (max 5 lines)**
+**Step 1 -- Language (always in English + German + emoji flags)**
 ```
-Willkommen bei Firstbrain! Ich bin dein KI-Wissenspartner.
+Welcome to Firstbrain! 🧠
 
-Ich helfe dir Notizen zu erstellen, zu vernetzen und zu organisieren.
-Du denkst -- ich kümmere mich um den Rest.
+Which language do you prefer?
+1) Deutsch  2) English  3) Other (just type it)
 
-Kurzes Setup: 3 Fragen, ~1 Minute. Los geht's?
-```
-Wait for user to confirm.
-
-**Step 2 -- Identity (optional, respect privacy)**
-```
-Wie soll ich dich nennen?
-(Vorname, Username, oder einfach Enter zum Überspringen)
-```
-Save response in preferences.md as `name:`. If skipped, use no name.
-
-**Step 3 -- Language**
-```
 Welche Sprache bevorzugst du?
 1) Deutsch  2) English  3) Andere (einfach schreiben)
 ```
-Save in preferences.md as `language:`. Use this language from now on.
+Save in preferences.md as `language:`. **All following messages use this language.**
 
-**Step 4 -- First interest**
-```
-Was beschäftigt dich gerade?
-(Ein Projekt, Thema, oder Ziel -- ein Satz reicht)
-```
-Use this to create their **first note** (project or zettel) right away. This makes the vault feel alive immediately.
+**Step 2 -- Welcome + Name (in chosen language)**
 
-**Step 5 -- Auto-setup (do silently, then report)**
-- Run `/scan` to build indexes
-- Create the first note from Step 4 using the appropriate template
-- Update MEMORY.md with name, language, first project
-- Update preferences.md
-
-Then show:
+German example:
 ```
-Fertig! Dein Vault ist eingerichtet.
+Firstbrain Vault Edition
+
+Ich bin dein KI-Wissenspartner. Du denkst -- ich organisiere.
+Noch 2 kurze Fragen, dann legen wir los.
+
+Wie soll ich dich nennen? (Enter = überspringen)
+```
+
+English example:
+```
+Firstbrain Vault Edition
+
+I'm your AI knowledge partner. You think -- I organize.
+2 quick questions, then we start.
+
+What should I call you? (Enter = skip)
+```
+Save in preferences.md as `name:`. If skipped, use no name.
+
+**Step 3 -- First interest (in chosen language)**
+
+German: `Was beschäftigt dich gerade? (Projekt, Thema, Ziel -- ein Satz reicht)`
+English: `What's on your mind right now? (Project, topic, goal -- one sentence is enough)`
+
+Use this to create their **first note** right away.
+
+**Step 4 -- Auto-setup (silent, then report)**
+- Run `/scan`
+- Create the first note from Step 3 (pick best template: project, zettel, or area)
+- Update MEMORY.md with name, language, first note
+- Update preferences.md with `onboarding_complete: true`
+
+Then show (German example):
+```
+Fertig! ✓
 
 Erstellt: [[Note Name]]
-Nächste Schritte: /daily (Tagesnotiz) | /create (neue Notiz) | /briefing (Übersicht)
+Befehle: /daily (Tagesnotiz) | /create (neue Notiz) | /briefing (Übersicht)
 
-Frag mich einfach was du brauchst.
+Frag einfach los.
 ```
 
-**Rules for onboarding:**
-- Total onboarding: max 5 messages from Claude, max 3 user inputs
-- Never force disclosure -- every question is skippable
-- Always create something tangible (a note) so the vault isn't empty after setup
-- If user types anything other than setup answers (e.g. a command), exit onboarding and handle their request normally
-- Store `onboarding_complete: true` in preferences.md when done
+English example:
+```
+Done! ✓
+
+Created: [[Note Name]]
+Commands: /daily (daily note) | /create (new note) | /briefing (overview)
+
+Just ask.
+```
+
+**Onboarding rules:**
+- Max 4 messages from Claude, max 3 user inputs
+- Every question skippable -- never force disclosure
+- Always create one real note so vault isn't empty after setup
+- If user types a command mid-onboarding: exit setup, run their command
+- Language step is NEVER skipped (default to English if no answer)
 
 **Memory writes:** Triggered by significant actions only:
 - Project status changes (new, completed, blocked)
