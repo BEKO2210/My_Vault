@@ -1,5 +1,5 @@
 ---
-updated: 
+updated: 2026-04-08
 ---
 
 # Working Memory
@@ -12,17 +12,19 @@ Claude's persistent context across sessions. Updated after significant actions.
 
 ## Current Priorities
 
-- Set up the vault: run `/scan` to build indexes
-- Create your first note with `/create`
-- Try `/briefing` for a daily summary
+- Vault onboarding complete. Belkis hat die erste Notiz erstellt.
+- Fortfahren mit dem Aufbau des Wissensnetzes.
 
 ## Recent Changes
 
-- (Will be populated as you use the vault)
+- Erste Zettel-Notiz erstellt: [[Zettel -- Das Gehirn als Wissens-Zentrale]]
+- Vault-Scan abgeschlossen.
 
 ## User Preferences
 
-- (Will be learned through usage -- language, workflow patterns, etc.)
+- Name: Belkis
+- Sprache: Deutsch
+- Fokus: Wissen speichern, filtern und Verbindungen finden.
 
 ## Topic Files
 

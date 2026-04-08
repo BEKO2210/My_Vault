@@ -1,8 +1,8 @@
 ---
-updated: 
-onboarding_complete: false
-name: 
-language: 
+updated: 2026-04-08
+onboarding_complete: true
+name: Belkis
+language: Deutsch
 ---
 
 # User Preferences

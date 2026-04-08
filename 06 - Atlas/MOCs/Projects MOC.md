@@ -10,6 +10,12 @@ tags:
 
 # Projects MOC
 
+## Summary
+
+Übersicht aller laufenden Projekte.
+Fokus auf Wissensmanagement und Effizienz.
+Optimierung des Systems ist oberste Priorität.
+
 > All active and planned projects at a glance.
 
 ## Create New Project
