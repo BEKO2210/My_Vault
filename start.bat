@@ -22,8 +22,25 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
-for /f "tokens=1 delims=v." %%a in ('node -v') do set NODE_MAJOR=%%a
-echo   [OK] Node.js detected
+for /f "tokens=1,2,3 delims=v." %%a in ('node -v') do (
+    set NODE_MAJOR=%%a
+    set NODE_MINOR=%%b
+    set NODE_PATCH=%%c
+)
+echo   [OK] Node.js v%NODE_MAJOR%.%NODE_MINOR%.%NODE_PATCH% detected
+
+if %NODE_MAJOR% LSS 22 (
+    echo   [ERROR] Node.js version 22 or higher is required.
+    pause
+    exit /b 1
+)
+if %NODE_MAJOR% EQU 22 (
+    if %NODE_MINOR% LSS 5 (
+        echo   [WARNING] Node.js v22.5.0+ is recommended for stable SQLite support.
+        echo             Current version: v%NODE_MAJOR%.%NODE_MINOR%.%NODE_PATCH%
+        echo.
+    )
+)
 
 :: -- Step 2: Check Claude Code CLI -------------------------
 where claude >nul 2>&1
@@ -85,20 +102,6 @@ if exist "node_modules\@huggingface" (
     echo        Run: npm install
 )
 
-:: -- Step 5: Launch ----------------------------------------
+:: -- Step 5: Launch Dashboard -------------------------------
 echo.
-echo   Starting Claude Code...
-echo   Vault: %cd%
-echo.
-echo   Quick commands:
-echo     /scan       Build vault indexes
-echo     /briefing   Daily summary
-echo     /create     Create a note
-echo     /daily      Today's daily note
-echo     /process    Execute inbox prompts
-echo.
-echo   -------------------------------------
-echo.
-
-:: Start Claude Code
-claude --verbose
+node .agents/dashboard.cjs
