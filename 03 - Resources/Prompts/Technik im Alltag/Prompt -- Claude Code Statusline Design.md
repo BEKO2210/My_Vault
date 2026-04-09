@@ -151,7 +151,7 @@ This is a "developer professional" style status bar. It prioritizes:
 * Detailed Git information for branch switching awareness
 * API efficiency monitoring for cost-conscious development
 * Visual density for maximum information per character
-```
+
 
 ## Anwendung
 

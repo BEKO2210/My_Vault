@@ -1,219 +1,167 @@
 /**
- * Firstbrain Pro Dashboard (TUI)
- * A high-end, responsive terminal interface for the AI Second Brain.
- * Optimized for modern terminals (PowerShell Core, Windows Terminal, iTerm2).
+ * Firstbrain Elite Dashboard (v3.3)
+ * High-End Neural Interface with surgical precision.
  */
 'use strict';
 
-const { spawnSync, spawn } = require('child_process');
+const { spawn } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
 
-// --- Configuration & High-End Styling ---
-const VERSION = "3.2.0-ELITE";
+// --- Pro Styling (ANSI 256) ---
 const C = {
-    res: "\x1b[0m",
-    b: "\x1b[1m",
-    d: "\x1b[2m",
+    reset: "\x1b[0m",
+    bright: "\x1b[1m",
+    dim: "\x1b[2m",
     cyan: "\x1b[38;5;51m",
     blue: "\x1b[38;5;33m",
-    deepBlue: "\x1b[38;5;27m",
-    gray: "\x1b[38;5;244m",
+    purple: "\x1b[38;5;99m",
+    gray: "\x1b[38;5;242m",
     white: "\x1b[38;5;255m",
     green: "\x1b[38;5;84m",
-    yellow: "\x1b[38;5;227m",
-    bgBlue: "\x1b[48;5;27m",
-    bgDark: "\x1b[48;5;234m"
+    bgSelect: "\x1b[48;5;238m\x1b[38;5;255m"
 };
 
 const UI = {
-    edge: "║",
-    line: "═",
-    tl: "╔",
-    tr: "╗",
-    bl: "╚",
-    br: "╝",
-    sep: "╟",
-    sepEnd: "╢",
-    dot: "·",
-    pointer: "›"
+    tl: "┏", tr: "┓", bl: "┗", br: "┛", h: "━", v: "┃",
+    sepL: "┠", sepR: "┨", cross: "╋",
+    ptr: " » "
 };
 
-// --- State ---
 let selectedIndex = 0;
-let vaultStats = { notes: 0, projects: 0, links: 0, lastScan: 'Never' };
+let stats = { notes: 0, projects: 0, lastScan: 'N/A' };
 
-const menuItems = [
-    { label: "LAUNCH CLAUDE CODE", desc: "Start the AI execution engine in Obsidian mode", action: launchClaude },
-    { label: "SYNCHRONIZE VAULT", desc: "Update indexes, tags and semantic embeddings", action: runScan },
-    { label: "GENERATE DAILY", desc: "Initialize today's workspace and scratchpad", action: createDaily },
-    { label: "INBOX PROCESSOR", desc: "Automate pending prompts and workspace actions", action: processInbox },
-    { label: "TERMINATE", desc: "Safe shutdown of all Firstbrain services", action: () => process.exit(0) }
+const menu = [
+    { id: 'claude',  label: "CORE: NEURAL STREAM", desc: "Launch Claude in Firstbrain Elite Mode" },
+    { id: 'scan',    label: "DATA: SYNC VAULT",    desc: "Update neural indexes & embeddings" },
+    { id: 'daily',   label: "TASK: GEN DAILY",     desc: "Initialize today's workspace" },
+    { id: 'process', label: "EXEC: INBOX OPS",     desc: "Process pending neural prompts" },
+    { id: 'exit',    label: "EXIT: DISCONNECT",    desc: "Safe terminal shutdown" }
 ];
 
-// --- Core Logic ---
-
-function loadStats() {
+function loadData() {
     try {
-        const indexPath = path.join(process.cwd(), '.claude/indexes/vault-index.json');
-        if (fs.existsSync(indexPath)) {
-            const data = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
-            const stats = fs.statSync(indexPath);
-            vaultStats.notes = data.noteCount || 0;
-            vaultStats.lastScan = stats.mtime.toLocaleTimeString();
-            
-            // Try to count projects
-            const projectsDir = path.join(process.cwd(), '01 - Projects');
-            if (fs.existsSync(projectsDir)) {
-                vaultStats.projects = fs.readdirSync(projectsDir).filter(f => f.endsWith('.md')).length;
-            }
+        const idxPath = path.join(process.cwd(), '.claude/indexes/vault-index.json');
+        if (fs.existsSync(idxPath)) {
+            const data = JSON.parse(fs.readFileSync(idxPath, 'utf8'));
+            stats.notes = data.noteCount || 0;
+            stats.lastScan = new Date(fs.statSync(idxPath).mtime).toLocaleTimeString();
         }
-    } catch (e) { /* ignore */ }
-}
-
-function launchClaude() {
-    process.stdin.setRawMode(false);
-    console.log(`\x1b[?25h\n${C.green}Entering AI Stream...${C.res}\n`);
-    const claude = spawn('claude', ['--verbose'], { stdio: 'inherit', shell: true });
-    claude.on('exit', () => {
-        init();
-    });
-}
-
-function runScan() {
-    process.stdin.setRawMode(false);
-    console.log(`\n${C.yellow}Starting Neural Indexing...${C.res}`);
-    spawnSync('node', ['index.js', 'scan'], { stdio: 'inherit', shell: true });
-    console.log(`\n${C.gray}Press any key to return to bridge...${C.res}`);
-    process.stdin.setRawMode(true);
-    process.stdin.once('data', () => init());
-}
-
-function createDaily() {
-    // Placeholder for actual logic
-    console.log(`\n${C.green}Daily initialized.${C.res}`);
-    setTimeout(() => init(), 800);
-}
-
-function processInbox() {
-    console.log(`\n${C.blue}Processing Inbox Stream...${C.res}`);
-    setTimeout(() => init(), 1500);
-}
-
-// --- UI Engine ---
-
-function drawCentered(text, color = C.res) {
-    const cols = process.stdout.columns || 80;
-    const plainText = text.replace(/\x1b\[.*?m/g, '');
-    const padding = Math.max(0, Math.floor((cols - plainText.length) / 2));
-    process.stdout.write(" ".repeat(padding) + color + text + C.res + "\n");
-}
-
-function drawFrameLine(content = "", color = C.blue) {
-    const cols = process.stdout.columns || 80;
-    const frameWidth = Math.min(cols - 4, 70);
-    const paddingLeft = Math.floor((cols - frameWidth) / 2);
-    
-    const plainContent = content.replace(/\x1b\[.*?m/g, '');
-    const innerSpace = frameWidth - 4;
-    const textPadding = " ".repeat(Math.max(0, innerSpace - plainContent.length));
-    
-    process.stdout.write(" ".repeat(paddingLeft) + color + UI.edge + " " + C.res + content + textPadding + " " + color + UI.edge + C.res + "\n");
-}
-
-function drawFrameBorder(type, color = C.blue) {
-    const cols = process.stdout.columns || 80;
-    const frameWidth = Math.min(cols - 4, 70);
-    const paddingLeft = Math.floor((cols - frameWidth) / 2);
-    
-    let line = "";
-    if (type === 'top') line = UI.tl + UI.line.repeat(frameWidth - 2) + UI.tr;
-    if (type === 'bottom') line = UI.bl + UI.line.repeat(frameWidth - 2) + UI.br;
-    if (type === 'mid') line = UI.sep + UI.line.repeat(frameWidth - 2) + UI.sepEnd;
-    
-    process.stdout.write(" ".repeat(paddingLeft) + color + line + C.res + "\n");
+    } catch (e) {}
 }
 
 function render() {
-    loadStats();
-    process.stdout.write('\x1b[H\x1b[J'); // Reset cursor and clear
-    process.stdout.write('\x1b[?25l');   // Hide cursor
-
+    loadData();
+    const cols = process.stdout.columns || 80;
     const rows = process.stdout.rows || 24;
-    const verticalPadding = Math.max(1, Math.floor((rows - 18) / 2));
+    const boxWidth = 76;
+    const padX = Math.floor((cols - boxWidth) / 2);
+    const padY = Math.floor((rows - 16) / 2);
 
-    process.stdout.write("\n".repeat(verticalPadding));
+    process.stdout.write('\x1b[H\x1b[J'); // Clear & Home
+    process.stdout.write('\x1b[?25l');   // Hide cursor
+    process.stdout.write("\n".repeat(padY));
 
-    // Logo & Title
-    drawCentered("◢◤ FIRSTBRAIN ELITE ◢◤", C.b + C.cyan);
-    drawCentered("NEURAL KNOWLEDGE INTERFACE", C.d + C.gray);
+    const draw = (text, color = C.reset, center = false) => {
+        const plain = text.replace(/\x1b\[.*?m/g, '');
+        let line = " ".repeat(padX) + color + text + C.reset;
+        if (center) {
+            const innerPad = Math.floor((boxWidth - plain.length) / 2);
+            line = " ".repeat(padX + innerPad) + color + text + C.reset;
+        }
+        process.stdout.write(line + "\n");
+    };
+
+    // Header
+    draw("◢◤ FIRSTBRAIN ELITE ◢◤", C.bright + C.cyan, true);
+    draw("NEURAL KNOWLEDGE INTERFACE", C.dim + C.gray, true);
     process.stdout.write("\n");
 
-    drawFrameBorder('top');
+    // Top Frame
+    draw(UI.tl + UI.h.repeat(boxWidth - 2) + UI.tr, C.blue);
     
-    // Status Row
-    const status = `${C.blue}VAULT:${C.res} ${vaultStats.notes} Notes ${C.gray}|${C.res} ${C.blue}PROJECTS:${C.res} ${vaultStats.projects} ${C.gray}|${C.res} ${C.blue}LAST SCAN:${C.res} ${vaultStats.lastScan}`;
-    drawFrameLine(status);
+    // Status
+    const statText = ` VAULT: ${stats.notes} Notes  │  PROJECTS: ${stats.projects}  │  LAST SYNC: ${stats.lastScan} `;
+    const statSpace = " ".repeat(Math.floor((boxWidth - 2 - statText.length) / 2));
+    draw(UI.v + statSpace + statText + statSpace + (statText.length % 2 === 0 ? "" : " ") + UI.v, C.blue);
     
-    drawFrameBorder('mid');
-    drawFrameLine("");
+    draw(UI.sepL + UI.h.repeat(boxWidth - 2) + UI.sepR, C.blue);
+    draw(UI.v + " ".repeat(boxWidth - 2) + UI.v, C.blue);
 
-    // Menu Items
-    menuItems.forEach((item, index) => {
-        const isSelected = index === selectedIndex;
-        if (isSelected) {
-            drawFrameLine(`${C.bgBlue}${C.white} ${UI.pointer} ${item.label.padEnd(20)} ${C.res} ${C.cyan}${item.desc}${C.res}`);
-        } else {
-            drawFrameLine(`  ${C.gray}${item.label.padEnd(20)} ${C.res} ${C.d}${item.desc}${C.res}`);
-        }
+    // Menu
+    menu.forEach((item, i) => {
+        const isSel = i === selectedIndex;
+        const pointer = isSel ? UI.ptr : "   ";
+        const label = item.label.padEnd(20);
+        const desc = item.desc.padEnd(45);
+        const content = ` ${pointer}${label}  ${C.gray}${desc} ${C.reset}`;
+        
+        const line = isSel ? C.bgSelect + content + C.reset : content;
+        const finalLine = UI.v + " " + line + " ".repeat(boxWidth - 4 - content.replace(/\x1b\[.*?m/g, '').length) + UI.v;
+        draw(finalLine, C.blue);
     });
 
-    drawFrameLine("");
-    drawFrameBorder('mid');
+    draw(UI.v + " ".repeat(boxWidth - 2) + UI.v, C.blue);
+    draw(UI.sepL + UI.h.repeat(boxWidth - 2) + UI.sepR, C.blue);
     
     // Footer
-    const help = `${C.d}NAVIGATE: ↑↓ ARROWS  |  SELECT: ENTER  |  EXIT: CTRL+C${C.res}`;
-    drawFrameLine(help);
-    
-    drawFrameBorder('bottom');
+    const help = " NAV: ↑↓ ARROWS  │  CONFIRM: ENTER  │  EXIT: CTRL+C ";
+    const helpSpace = " ".repeat(Math.floor((boxWidth - 2 - help.length) / 2));
+    draw(UI.v + helpSpace + C.dim + help + C.res + helpSpace + (help.length % 2 === 0 ? "" : " ") + UI.v, C.blue);
+    draw(UI.bl + UI.h.repeat(boxWidth - 2) + UI.br, C.blue);
 }
 
-// --- Input Handling ---
+function handleAction() {
+    const item = menu[selectedIndex];
+    process.stdout.write('\x1b[?25h'); // Show cursor
+    
+    if (item.id === 'exit') process.exit(0);
 
-function setupInput() {
-    readline.emitKeypressEvents(process.stdin);
-    if (process.stdin.isTTY) {
-        process.stdin.setRawMode(true);
+    if (item.id === 'claude') {
+        process.stdin.setRawMode(false);
+        console.log(`\n${C.green}Connecting to Neural Stream...${C.reset}\n`);
+        // Use path to avoid shell: true
+        const cmd = process.platform === 'win32' ? 'claude.cmd' : 'claude';
+        const child = spawn(cmd, ['--verbose'], { stdio: 'inherit' });
+        child.on('exit', () => {
+            process.stdin.setRawMode(true);
+            render();
+        });
+        return;
     }
 
-    // Clean up old listeners to prevent leaks
-    process.stdin.removeAllListeners('keypress');
+    if (item.id === 'scan') {
+        process.stdin.setRawMode(false);
+        spawn('node', ['index.js', 'scan'], { stdio: 'inherit' }).on('exit', () => {
+            process.stdin.setRawMode(true);
+            render();
+        });
+        return;
+    }
 
-    process.stdin.on('keypress', (str, key) => {
-        if (key.ctrl && key.name === 'c') {
-            process.stdout.write('\x1b[?25h'); // Show cursor
-            process.exit();
-        } else if (key.name === 'up') {
-            selectedIndex = (selectedIndex - 1 + menuItems.length) % menuItems.length;
-            render();
-        } else if (key.name === 'down') {
-            selectedIndex = (selectedIndex + 1) % menuItems.length;
-            render();
-        } else if (key.name === 'return') {
-            menuItems[selectedIndex].action();
-        }
-    });
+    // Default return to menu for others
+    setTimeout(() => render(), 1000);
 }
 
-function init() {
-    setupInput();
-    render();
-}
+readline.emitKeypressEvents(process.stdin);
+if (process.stdin.isTTY) process.stdin.setRawMode(true);
 
-// Handle window resize
-process.stdout.on('resize', () => {
-    render();
+process.stdin.on('keypress', (str, key) => {
+    if (key.ctrl && key.name === 'c') {
+        process.stdout.write('\x1b[?25h');
+        process.exit();
+    } else if (key.name === 'up') {
+        selectedIndex = (selectedIndex - 1 + menu.length) % menu.length;
+        render();
+    } else if (key.name === 'down') {
+        selectedIndex = (selectedIndex + 1) % menu.length;
+        render();
+    } else if (key.name === 'return') {
+        handleAction();
+    }
 });
 
-init();
+process.stdout.on('resize', () => render());
+
+render();
