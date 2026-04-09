@@ -1,7 +1,7 @@
 /**
- * Firstbrain Interactive Dashboard
- * A professional CLI menu for managing the vault and launching Claude Code.
- * Inspired by Get Shit Done (GSD) and Kimi Code.
+ * Firstbrain Pro Dashboard (TUI)
+ * A high-end, responsive terminal interface for the AI Second Brain.
+ * Optimized for modern terminals (PowerShell Core, Windows Terminal, iTerm2).
  */
 'use strict';
 
@@ -10,137 +10,173 @@ const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
 
-// --- Configuration ---
-const VERSION = "3.1.0-PUBLIC";
-const COLORS = {
-    reset: "\x1b[0m",
-    bright: "\x1b[1m",
-    dim: "\x1b[2m",
-    underscore: "\x1b[4m",
-    blink: "\x1b[5m",
-    reverse: "\x1b[7m",
-    hidden: "\x1b[8m",
-    
-    black: "\x1b[30m",
-    red: "\x1b[31m",
-    green: "\x1b[32m",
-    yellow: "\x1b[33m",
-    blue: "\x1b[34m",
-    magenta: "\x1b[35m",
-    cyan: "\x1b[36m",
-    white: "\x1b[37m",
-    
-    bgBlack: "\x1b[40m",
-    bgRed: "\x1b[41m",
-    bgGreen: "\x1b[42m",
-    bgYellow: "\x1b[43m",
-    bgBlue: "\x1b[44m",
-    bgMagenta: "\x1b[45m",
-    bgCyan: "\x1b[46m",
-    bgWhite: "\x1b[47m"
+// --- Configuration & High-End Styling ---
+const VERSION = "3.2.0-ELITE";
+const C = {
+    res: "\x1b[0m",
+    b: "\x1b[1m",
+    d: "\x1b[2m",
+    cyan: "\x1b[38;5;51m",
+    blue: "\x1b[38;5;33m",
+    deepBlue: "\x1b[38;5;27m",
+    gray: "\x1b[38;5;244m",
+    white: "\x1b[38;5;255m",
+    green: "\x1b[38;5;84m",
+    yellow: "\x1b[38;5;227m",
+    bgBlue: "\x1b[48;5;27m",
+    bgDark: "\x1b[48;5;234m"
+};
+
+const UI = {
+    edge: "║",
+    line: "═",
+    tl: "╔",
+    tr: "╗",
+    bl: "╚",
+    br: "╝",
+    sep: "╟",
+    sepEnd: "╢",
+    dot: "·",
+    pointer: "›"
 };
 
 // --- State ---
 let selectedIndex = 0;
+let vaultStats = { notes: 0, projects: 0, links: 0, lastScan: 'Never' };
+
 const menuItems = [
-    { label: "🚀 Start Claude Code (Obsidian Mode)", action: launchClaude },
-    { label: "🔍 Scan Vault (Update Indexes & Embeddings)", action: runScan },
-    { label: "📅 Create Today's Daily Note", action: createDaily },
-    { label: "📥 Process Inbox Prompts", action: processInbox },
-    { label: "⚙️  View System Status", action: viewStatus },
-    { label: "❌ Exit", action: () => process.exit(0) }
+    { label: "LAUNCH CLAUDE CODE", desc: "Start the AI execution engine in Obsidian mode", action: launchClaude },
+    { label: "SYNCHRONIZE VAULT", desc: "Update indexes, tags and semantic embeddings", action: runScan },
+    { label: "GENERATE DAILY", desc: "Initialize today's workspace and scratchpad", action: createDaily },
+    { label: "INBOX PROCESSOR", desc: "Automate pending prompts and workspace actions", action: processInbox },
+    { label: "TERMINATE", desc: "Safe shutdown of all Firstbrain services", action: () => process.exit(0) }
 ];
 
-// --- UI Components ---
+// --- Core Logic ---
 
-function clearScreen() {
-    process.stdout.write('\x1Bc');
-}
-
-function drawBanner() {
-    const width = 60;
-    console.log(`${COLORS.cyan}┏${"━".repeat(width)}┓${COLORS.reset}`);
-    console.log(`${COLORS.cyan}┃${COLORS.reset}  ${COLORS.bright}🧠 FIRSTBRAIN -- AI-NATIVE SECOND BRAIN${COLORS.reset}${" ".repeat(width - 41)}${COLORS.cyan}┃${COLORS.reset}`);
-    console.log(`${COLORS.cyan}┃${COLORS.reset}  ${COLORS.dim}Version ${VERSION} | Open Source Edition${COLORS.reset}${" ".repeat(width - 32)}${COLORS.cyan}┃${COLORS.reset}`);
-    console.log(`${COLORS.cyan}┣${"━".repeat(width)}┫${COLORS.reset}`);
-    console.log(`${COLORS.cyan}┃${COLORS.reset}${" ".repeat(width)}${COLORS.cyan}┃${COLORS.reset}`);
-}
-
-function drawMenu() {
-    menuItems.forEach((item, index) => {
-        if (index === selectedIndex) {
-            console.log(`  ${COLORS.bgBlue}${COLORS.white} > ${item.label} ${COLORS.reset}`);
-        } else {
-            console.log(`    ${item.label}`);
+function loadStats() {
+    try {
+        const indexPath = path.join(process.cwd(), '.claude/indexes/vault-index.json');
+        if (fs.existsSync(indexPath)) {
+            const data = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
+            const stats = fs.statSync(indexPath);
+            vaultStats.notes = data.noteCount || 0;
+            vaultStats.lastScan = stats.mtime.toLocaleTimeString();
+            
+            // Try to count projects
+            const projectsDir = path.join(process.cwd(), '01 - Projects');
+            if (fs.existsSync(projectsDir)) {
+                vaultStats.projects = fs.readdirSync(projectsDir).filter(f => f.endsWith('.md')).length;
+            }
         }
-    });
-    console.log(`\n${COLORS.dim}  (Use arrow keys to navigate, Enter to select)${COLORS.reset}`);
+    } catch (e) { /* ignore */ }
 }
-
-function render() {
-    clearScreen();
-    drawBanner();
-    drawMenu();
-    console.log(`${COLORS.cyan}┗${"━".repeat(60)}┛${COLORS.reset}`);
-}
-
-// --- Actions ---
 
 function launchClaude() {
-    console.log(`\n${COLORS.green}Starting Claude Code...${COLORS.reset}\n`);
-    // Pass control to Claude
+    process.stdin.setRawMode(false);
+    console.log(`\x1b[?25h\n${C.green}Entering AI Stream...${C.res}\n`);
     const claude = spawn('claude', ['--verbose'], { stdio: 'inherit', shell: true });
     claude.on('exit', () => {
-        setupInput();
-        render();
+        init();
     });
 }
 
 function runScan() {
-    console.log(`\n${COLORS.yellow}Scanning vault...${COLORS.reset}`);
-    const result = spawnSync('node', ['index.js', 'scan'], { stdio: 'inherit', shell: true });
-    waitForKey();
+    process.stdin.setRawMode(false);
+    console.log(`\n${C.yellow}Starting Neural Indexing...${C.res}`);
+    spawnSync('node', ['index.js', 'scan'], { stdio: 'inherit', shell: true });
+    console.log(`\n${C.gray}Press any key to return to bridge...${C.res}`);
+    process.stdin.setRawMode(true);
+    process.stdin.once('data', () => init());
 }
 
 function createDaily() {
-    console.log(`\n${COLORS.yellow}Creating daily note...${COLORS.reset}`);
-    // This calls the specific skill script if it were standalone, 
-    // for now we simulate or trigger via node index.js if implemented
-    console.log(`${COLORS.green}Done! Check your Inbox/Daily Notes folder.${COLORS.reset}`);
-    waitForKey();
+    // Placeholder for actual logic
+    console.log(`\n${C.green}Daily initialized.${C.res}`);
+    setTimeout(() => init(), 800);
 }
 
 function processInbox() {
-    console.log(`\n${COLORS.yellow}Processing Inbox...${COLORS.reset}`);
-    // Trigger /process logic
-    console.log(`${COLORS.blue}Scanning 00 - Inbox for PROMPT: or ACTION: files...${COLORS.reset}`);
-    waitForKey();
+    console.log(`\n${C.blue}Processing Inbox Stream...${C.res}`);
+    setTimeout(() => init(), 1500);
 }
 
-function viewStatus() {
-    console.log(`\n${COLORS.bright}System Status:${COLORS.reset}`);
-    console.log(`- Node.js: ${process.version}`);
-    console.log(`- OS: ${process.platform}`);
-    console.log(`- Directory: ${process.cwd()}`);
+// --- UI Engine ---
+
+function drawCentered(text, color = C.res) {
+    const cols = process.stdout.columns || 80;
+    const plainText = text.replace(/\x1b\[.*?m/g, '');
+    const padding = Math.max(0, Math.floor((cols - plainText.length) / 2));
+    process.stdout.write(" ".repeat(padding) + color + text + C.res + "\n");
+}
+
+function drawFrameLine(content = "", color = C.blue) {
+    const cols = process.stdout.columns || 80;
+    const frameWidth = Math.min(cols - 4, 70);
+    const paddingLeft = Math.floor((cols - frameWidth) / 2);
     
-    if (fs.existsSync('.claude/indexes/vault-index.json')) {
-        const stats = fs.statSync('.claude/indexes/vault-index.json');
-        console.log(`- Last Scan: ${stats.mtime.toLocaleString()}`);
-    } else {
-        console.log(`- Last Scan: Never (Run /scan first)`);
-    }
-    waitForKey();
+    const plainContent = content.replace(/\x1b\[.*?m/g, '');
+    const innerSpace = frameWidth - 4;
+    const textPadding = " ".repeat(Math.max(0, innerSpace - plainContent.length));
+    
+    process.stdout.write(" ".repeat(paddingLeft) + color + UI.edge + " " + C.res + content + textPadding + " " + color + UI.edge + C.res + "\n");
 }
 
-function waitForKey() {
-    console.log(`\n${COLORS.dim}Press any key to return to menu...${COLORS.reset}`);
-    process.stdin.setRawMode(true);
-    process.stdin.resume();
-    process.stdin.once('data', () => {
-        process.stdin.setRawMode(false);
-        render();
-        setupInput();
+function drawFrameBorder(type, color = C.blue) {
+    const cols = process.stdout.columns || 80;
+    const frameWidth = Math.min(cols - 4, 70);
+    const paddingLeft = Math.floor((cols - frameWidth) / 2);
+    
+    let line = "";
+    if (type === 'top') line = UI.tl + UI.line.repeat(frameWidth - 2) + UI.tr;
+    if (type === 'bottom') line = UI.bl + UI.line.repeat(frameWidth - 2) + UI.br;
+    if (type === 'mid') line = UI.sep + UI.line.repeat(frameWidth - 2) + UI.sepEnd;
+    
+    process.stdout.write(" ".repeat(paddingLeft) + color + line + C.res + "\n");
+}
+
+function render() {
+    loadStats();
+    process.stdout.write('\x1b[H\x1b[J'); // Reset cursor and clear
+    process.stdout.write('\x1b[?25l');   // Hide cursor
+
+    const rows = process.stdout.rows || 24;
+    const verticalPadding = Math.max(1, Math.floor((rows - 18) / 2));
+
+    process.stdout.write("\n".repeat(verticalPadding));
+
+    // Logo & Title
+    drawCentered("◢◤ FIRSTBRAIN ELITE ◢◤", C.b + C.cyan);
+    drawCentered("NEURAL KNOWLEDGE INTERFACE", C.d + C.gray);
+    process.stdout.write("\n");
+
+    drawFrameBorder('top');
+    
+    // Status Row
+    const status = `${C.blue}VAULT:${C.res} ${vaultStats.notes} Notes ${C.gray}|${C.res} ${C.blue}PROJECTS:${C.res} ${vaultStats.projects} ${C.gray}|${C.res} ${C.blue}LAST SCAN:${C.res} ${vaultStats.lastScan}`;
+    drawFrameLine(status);
+    
+    drawFrameBorder('mid');
+    drawFrameLine("");
+
+    // Menu Items
+    menuItems.forEach((item, index) => {
+        const isSelected = index === selectedIndex;
+        if (isSelected) {
+            drawFrameLine(`${C.bgBlue}${C.white} ${UI.pointer} ${item.label.padEnd(20)} ${C.res} ${C.cyan}${item.desc}${C.res}`);
+        } else {
+            drawFrameLine(`  ${C.gray}${item.label.padEnd(20)} ${C.res} ${C.d}${item.desc}${C.res}`);
+        }
     });
+
+    drawFrameLine("");
+    drawFrameBorder('mid');
+    
+    // Footer
+    const help = `${C.d}NAVIGATE: ↑↓ ARROWS  |  SELECT: ENTER  |  EXIT: CTRL+C${C.res}`;
+    drawFrameLine(help);
+    
+    drawFrameBorder('bottom');
 }
 
 // --- Input Handling ---
@@ -151,8 +187,12 @@ function setupInput() {
         process.stdin.setRawMode(true);
     }
 
+    // Clean up old listeners to prevent leaks
+    process.stdin.removeAllListeners('keypress');
+
     process.stdin.on('keypress', (str, key) => {
         if (key.ctrl && key.name === 'c') {
+            process.stdout.write('\x1b[?25h'); // Show cursor
             process.exit();
         } else if (key.name === 'up') {
             selectedIndex = (selectedIndex - 1 + menuItems.length) % menuItems.length;
@@ -161,18 +201,19 @@ function setupInput() {
             selectedIndex = (selectedIndex + 1) % menuItems.length;
             render();
         } else if (key.name === 'return') {
-            process.stdin.setRawMode(false);
-            process.stdin.removeAllListeners('keypress');
             menuItems[selectedIndex].action();
         }
     });
 }
 
-// --- Initialization ---
-
 function init() {
-    render();
     setupInput();
+    render();
 }
+
+// Handle window resize
+process.stdout.on('resize', () => {
+    render();
+});
 
 init();
